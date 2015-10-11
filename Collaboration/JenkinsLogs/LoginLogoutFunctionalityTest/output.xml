@@ -1,0 +1,1754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 2.9.1 (Jython 2.7.0 on java1.8.0_60)" generated="20151008 16:01:02.272">
+<suite source="C:\Workspace\Collaboration" name="Collaboration" id="s1">
+<suite source="C:\Workspace\Collaboration\FunctionalTest" name="FunctionalTest" id="s1-s1">
+<suite source="C:\Workspace\Collaboration\FunctionalTest\LoginLogoutFunctionalityTest.robot" name="LoginLogoutFunctionalityTest" id="s1-s1-s1">
+<test name="User Should Successfully Login To The Windows Desktop App" id="s1-s1-s1-t1">
+<kw type="setup" library="sikuli_keywords" name="Set Default Image Library Path">
+<arguments>
+<arg>${FREELANCER_DESKTOPAPP_IMAGELIBRARY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:08.782">Arguments: [ ${p_imageLibraryPath}='C:/Collaboration/Resources/Library/ImagesLibrary' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Set Image Library Path">
+<arguments>
+<arg>${p_imageLibraryPath}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:08.786">Arguments: [ 'C:/Collaboration/Resources/Library/ImagesLibrary' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:08.789">Return: None</msg>
+<status endtime="20151008 16:01:08.790" starttime="20151008 16:01:08.784" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:08.790">Return: None</msg>
+<status endtime="20151008 16:01:08.826" starttime="20151008 16:01:08.773" status="PASS"></status>
+</kw>
+<kw library="desktop_install_uninstall_dialog" name="Given The &quot;Windows&quot; Desktop App Is Installed">
+<msg level="TRACE" timestamp="20151008 16:01:08.923">Arguments: [  ]</msg>
+<kw library="desktop_install_uninstall_dialog" name="The &quot;${tc_OS}&quot; Desktop App Installer Should Be Successfully Installed">
+<msg level="TRACE" timestamp="20151008 16:01:08.926">Arguments: [  ]</msg>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${tc_OS}' == 'Windows'</arg>
+<arg>Verify If Freelancer Desktop App Is Installed in Windows</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:08.942">Arguments: [ "'Windows' == 'Windows'" | 'Verify If Freelancer Desktop App Is Installed in Windows' ]</msg>
+<kw library="desktop_install_uninstall_dialog" name="Verify If Freelancer Desktop App Is Installed in Windows">
+<msg level="TRACE" timestamp="20151008 16:01:09.084">Arguments: [  ]</msg>
+<kw library="OperatingSystem" name="Directory Should Not Be Empty">
+<doc>Fails if the specified directory is empty.</doc>
+<arguments>
+<arg>${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:09.087">Arguments: [ 'C:/Program Files (x86)/Freelancer.com/Freelancer Desktop App' ]</msg>
+<msg level="INFO" html="yes" timestamp="20151008 16:01:09.089">Listing contents of directory '&lt;a href="file://C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App"&gt;C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App&lt;/a&gt;'.</msg>
+<msg level="INFO" html="yes" timestamp="20151008 16:01:09.090">Directory '&lt;a href="file://C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App"&gt;C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App&lt;/a&gt;' contains 11 items.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:09.091">Return: None</msg>
+<status endtime="20151008 16:01:09.092" starttime="20151008 16:01:09.085" status="PASS"></status>
+</kw>
+<kw library="OperatingSystem" name="File Should Exist">
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<arguments>
+<arg>${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:09.094">Arguments: [ 'C:/Program Files (x86)/Freelancer.com/Freelancer Desktop App/freelancer-desktop-app.exe' ]</msg>
+<msg level="INFO" html="yes" timestamp="20151008 16:01:09.097">File '&lt;a href="file://C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App\freelancer-desktop-app.exe"&gt;C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App\freelancer-desktop-app.exe&lt;/a&gt;' exists</msg>
+<msg level="TRACE" timestamp="20151008 16:01:09.098">Return: None</msg>
+<status endtime="20151008 16:01:09.099" starttime="20151008 16:01:09.093" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:09.106">Return: None</msg>
+<status endtime="20151008 16:01:09.107" starttime="20151008 16:01:09.082" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:09.107">Return: None</msg>
+<status endtime="20151008 16:01:09.107" starttime="20151008 16:01:08.929" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:09.108">Return: None</msg>
+<status endtime="20151008 16:01:09.108" starttime="20151008 16:01:08.925" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:09.108">Return: None</msg>
+<status endtime="20151008 16:01:09.109" starttime="20151008 16:01:08.835" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="When User Runs the &quot;Windows&quot; Desktop App">
+<msg level="TRACE" timestamp="20151008 16:01:09.133">Arguments: [  ]</msg>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${tc_OS}' == 'Windows'</arg>
+<arg>Start Application</arg>
+<arg>${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:09.138">Arguments: [ "'Windows' == 'Windows'" | 'Start Application' | '${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}' ]</msg>
+<kw library="sikuli_keywords" name="Start Application">
+<arguments>
+<arg>${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:09.149">Arguments: [ ${g_APPLICATION_PATH}='C:/Program Files (x86)/Freelancer.com/Freelancer Desktop App/freelancer-desktop-app.exe' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Start App">
+<arguments>
+<arg>${g_APPLICATION_PATH}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:09.153">Arguments: [ 'C:/Program Files (x86)/Freelancer.com/Freelancer Desktop App/freelancer-desktop-app.exe' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:15.755">[log] App.open [4396:]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:15.766">Return: None</msg>
+<status endtime="20151008 16:01:15.767" starttime="20151008 16:01:09.150" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:15.768">Return: None</msg>
+<status endtime="20151008 16:01:15.775" starttime="20151008 16:01:09.146" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:15.775">Return: None</msg>
+<status endtime="20151008 16:01:15.776" starttime="20151008 16:01:09.136" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:15.776">Return: None</msg>
+<status endtime="20151008 16:01:15.777" starttime="20151008 16:01:09.132" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="Then User Should Be Able To View The Update Checker">
+<msg level="TRACE" timestamp="20151008 16:01:15.795">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait In Seconds">
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:15.801">Arguments: [ ${p_seconds}='1' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Set Wait Value">
+<arguments>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:15.807">Arguments: [ '1' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:16.809">Return: None</msg>
+<status endtime="20151008 16:01:16.813" starttime="20151008 16:01:15.806" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:16.881">Return: None</msg>
+<status endtime="20151008 16:01:16.882" starttime="20151008 16:01:15.796" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Ignore Error">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Assert That Image Should Exist</arg>
+<arg>${UPDATECHECKER_BACKGROUND}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:16.885">Arguments: [ 'Assert That Image Should Exist' | '${UPDATECHECKER_BACKGROUND}' | '${IMAGE_RECOGNITION_SENSITIVITY}' ]</msg>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${UPDATECHECKER_BACKGROUND}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:16.894">Arguments: [ ${p_image}='Common/UpdateChecker/UPDATECHECKER_BACKGROUND.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:16.898">Arguments: [ 'Common/UpdateChecker/UPDATECHECKER_BACKGROUND.png' | '0.68' ]</msg>
+<msg level="FAIL" timestamp="20151008 16:01:20.123">AssertionError</msg>
+<msg level="DEBUG" timestamp="20151008 16:01:20.125">Traceback (most recent call last):
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 427, in assertImageExists
+    assert exists(self.setImageRecognitionSensitivity(args[0], args[1]))
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 427, in assertImageExists
+    assert exists(self.setImageRecognitionSensitivity(args[0], args[1]))</msg>
+<status endtime="20151008 16:01:20.125" starttime="20151008 16:01:16.896" status="FAIL"></status>
+</kw>
+<status endtime="20151008 16:01:20.136" starttime="20151008 16:01:16.889" status="FAIL"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:20.137">Return: (b'FAIL', 'AssertionError')</msg>
+<status endtime="20151008 16:01:20.142" starttime="20151008 16:01:16.883" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Ignore Error">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Assert That Image Should Exist</arg>
+<arg>${UPDATECHECKER_STATUS}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:20.149">Arguments: [ 'Assert That Image Should Exist' | '${UPDATECHECKER_STATUS}' | '${IMAGE_RECOGNITION_SENSITIVITY}' ]</msg>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${UPDATECHECKER_STATUS}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:20.159">Arguments: [ ${p_image}='Common/UpdateChecker/UPDATECHECKER_STATUS.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:20.246">Arguments: [ 'Common/UpdateChecker/UPDATECHECKER_STATUS.png' | '0.68' ]</msg>
+<msg level="FAIL" timestamp="20151008 16:01:23.364">AssertionError</msg>
+<msg level="DEBUG" timestamp="20151008 16:01:23.365">Traceback (most recent call last):
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 427, in assertImageExists
+    assert exists(self.setImageRecognitionSensitivity(args[0], args[1]))
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 427, in assertImageExists
+    assert exists(self.setImageRecognitionSensitivity(args[0], args[1]))</msg>
+<status endtime="20151008 16:01:23.366" starttime="20151008 16:01:20.244" status="FAIL"></status>
+</kw>
+<status endtime="20151008 16:01:23.369" starttime="20151008 16:01:20.153" status="FAIL"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:23.370">Return: (b'FAIL', 'AssertionError')</msg>
+<status endtime="20151008 16:01:23.371" starttime="20151008 16:01:20.148" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:23.371">Return: None</msg>
+<status endtime="20151008 16:01:23.376" starttime="20151008 16:01:15.792" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="When User Is In Desktop App Login Page">
+<msg level="TRACE" timestamp="20151008 16:01:23.381">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Switch Application Focus">
+<arguments>
+<arg>${FREELANCER_DESKTOPAPP_NAME}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:23.388">Arguments: [ ${p_application_name}='Freelancer Desktop App' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Switch App Focus">
+<arguments>
+<arg>${p_application_name}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:23.391">Arguments: [ 'Freelancer Desktop App' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:23.398">[log] App.focus:  [4120:Freelancer]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:23.401">Return: None</msg>
+<status endtime="20151008 16:01:23.401" starttime="20151008 16:01:23.390" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:23.402">Return: None</msg>
+<status endtime="20151008 16:01:23.402" starttime="20151008 16:01:23.383" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${DESKTOPAPP_LOGIN_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:23.405">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:23.410">Arguments: [ 'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:23.575">Return: None</msg>
+<status endtime="20151008 16:01:23.576" starttime="20151008 16:01:23.409" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:23.576">Return: None</msg>
+<status endtime="20151008 16:01:23.578" starttime="20151008 16:01:23.403" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${DESKTOPAPP_LOGIN_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:23.586">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:23.592">Arguments: [ 'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:23.666">PASS: UI matched with reference image:'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:23.677">Return: None</msg>
+<status endtime="20151008 16:01:23.678" starttime="20151008 16:01:23.591" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:23.679">Return: None</msg>
+<status endtime="20151008 16:01:23.679" starttime="20151008 16:01:23.584" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:23.680">Return: None</msg>
+<status endtime="20151008 16:01:23.681" starttime="20151008 16:01:23.378" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="And User Logs In With &quot;${FREELANCER_TEST_EMAIL}&quot; And &quot;${FREELANCER_TEST_PASSWORD}&quot;">
+<msg level="TRACE" timestamp="20151008 16:01:23.685">Arguments: [  ]</msg>
+<kw library="desktopapp_login_page" name="User Inputs Username &quot;${tc_USER_NAME}&quot;">
+<msg level="TRACE" timestamp="20151008 16:01:23.688">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Inputs String &quot;${t_userName}&quot; in &quot;${DESKTOPAPP_USERNAME_FIELD}&quot; Field">
+<msg level="TRACE" timestamp="20151008 16:01:23.692">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_field}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:23.705">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_USERNAME_FIELD.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:23.709">Arguments: [ 'Common/LoginPage/LOGIN_USERNAME_FIELD.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:23.881">Return: None</msg>
+<status endtime="20151008 16:01:23.882" starttime="20151008 16:01:23.708" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:23.883">Return: None</msg>
+<status endtime="20151008 16:01:23.883" starttime="20151008 16:01:23.696" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Input Strings In Image XY Coordinates">
+<arguments>
+<arg>${t_field}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>0</arg>
+<arg>0</arg>
+<arg>${t_string}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:24.145">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_USERNAME_FIELD.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_xOffset}='0' | ${p_yOffset}='0' | ${p_String}='fagunday@freelancer.com' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Type Text Inside Image XY">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_xOffset}</arg>
+<arg>${p_yOffset}</arg>
+<arg>${p_String}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:24.160">Arguments: [ 'Common/LoginPage/LOGIN_USERNAME_FIELD.png' | '0.68' | '0' | '0' | 'fagunday@freelancer.com' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:25.923">PASS: UI load successful. Reference image:'Common/LoginPage/LOGIN_USERNAME_FIELD.png'.
+[log] CLICK on L(576,366)@S(0)[0,0 1152x864]
+[log]  TYPE "fagunday@freelancer.com"</msg>
+<msg level="TRACE" timestamp="20151008 16:01:25.923">Return: None</msg>
+<status endtime="20151008 16:01:25.923" starttime="20151008 16:01:24.149" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:25.926">Return: None</msg>
+<status endtime="20151008 16:01:25.927" starttime="20151008 16:01:23.971" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:25.927">Return: None</msg>
+<status endtime="20151008 16:01:25.930" starttime="20151008 16:01:23.690" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:25.932">Return: None</msg>
+<status endtime="20151008 16:01:25.932" starttime="20151008 16:01:23.686" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="User Inputs Password&quot;${tc_USER_PASSWORD}&quot;">
+<msg level="TRACE" timestamp="20151008 16:01:25.936">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Inputs String &quot;${t_userPassword}&quot; in &quot;${DESKTOPAPP_PASSWORD_FIELD}&quot; Field">
+<msg level="TRACE" timestamp="20151008 16:01:25.939">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_field}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:25.968">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_PASSWORD_FIELD.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:25.974">Arguments: [ 'Common/LoginPage/LOGIN_PASSWORD_FIELD.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:26.070">Return: None</msg>
+<status endtime="20151008 16:01:26.072" starttime="20151008 16:01:25.969" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:26.072">Return: None</msg>
+<status endtime="20151008 16:01:26.073" starttime="20151008 16:01:25.961" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Input Strings In Image XY Coordinates">
+<arguments>
+<arg>${t_field}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>0</arg>
+<arg>0</arg>
+<arg>${t_string}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:26.146">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_PASSWORD_FIELD.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_xOffset}='0' | ${p_yOffset}='0' | ${p_String}='PSalm23$$$' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Type Text Inside Image XY">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_xOffset}</arg>
+<arg>${p_yOffset}</arg>
+<arg>${p_String}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:26.171">Arguments: [ 'Common/LoginPage/LOGIN_PASSWORD_FIELD.png' | '0.68' | '0' | '0' | 'PSalm23$$$' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:27.467">PASS: UI load successful. Reference image:'Common/LoginPage/LOGIN_PASSWORD_FIELD.png'.
+[log] CLICK on L(576,419)@S(0)[0,0 1152x864]
+[log]  TYPE "PSalm23$$$"</msg>
+<msg level="TRACE" timestamp="20151008 16:01:27.468">Return: None</msg>
+<status endtime="20151008 16:01:27.468" starttime="20151008 16:01:26.149" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:27.470">Return: None</msg>
+<status endtime="20151008 16:01:27.471" starttime="20151008 16:01:26.083" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:27.471">Return: None</msg>
+<status endtime="20151008 16:01:27.472" starttime="20151008 16:01:25.937" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:27.473">Return: None</msg>
+<status endtime="20151008 16:01:27.474" starttime="20151008 16:01:25.934" status="PASS"></status>
+</kw>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${DESKTOPAPP_LOGIN_BUTTON}&quot;">
+<msg level="TRACE" timestamp="20151008 16:01:27.478">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:27.481">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_LOGIN_BUTTON.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:27.490">Arguments: [ 'Common/LoginPage/LOGIN_LOGIN_BUTTON.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:27.589">Return: None</msg>
+<status endtime="20151008 16:01:27.590" starttime="20151008 16:01:27.488" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:27.591">Return: None</msg>
+<status endtime="20151008 16:01:27.591" starttime="20151008 16:01:27.479" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:27.594">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_LOGIN_BUTTON.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:27.597">Arguments: [ 'Common/LoginPage/LOGIN_LOGIN_BUTTON.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:28.407">PASS: UI load successful. Reference image:'Common/LoginPage/LOGIN_LOGIN_BUTTON.png'.
+[log] CLICK on L(576,483)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:28.411">Return: None</msg>
+<status endtime="20151008 16:01:28.412" starttime="20151008 16:01:27.596" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:28.412">Return: None</msg>
+<status endtime="20151008 16:01:28.415" starttime="20151008 16:01:27.592" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:28.415">Return: None</msg>
+<status endtime="20151008 16:01:28.416" starttime="20151008 16:01:27.477" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:28.416">Return: None</msg>
+<status endtime="20151008 16:01:28.416" starttime="20151008 16:01:23.683" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="Then User Should Be Logged In Successfully">
+<msg level="TRACE" timestamp="20151008 16:01:28.419">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="Wait And Assert That &quot;${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}&quot; Is Visible">
+<msg level="TRACE" timestamp="20151008 16:01:28.421">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:28.425">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:28.431">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:36.375">Return: None</msg>
+<status endtime="20151008 16:01:36.393" starttime="20151008 16:01:28.430" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:36.394">Return: None</msg>
+<status endtime="20151008 16:01:36.394" starttime="20151008 16:01:28.423" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:36.397">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:36.407">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:36.792">PASS: UI matched with reference image:'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:36.793">Return: None</msg>
+<status endtime="20151008 16:01:36.873" starttime="20151008 16:01:36.403" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:36.874">Return: None</msg>
+<status endtime="20151008 16:01:36.875" starttime="20151008 16:01:36.395" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:36.876">Return: None</msg>
+<status endtime="20151008 16:01:36.876" starttime="20151008 16:01:28.420" status="PASS"></status>
+</kw>
+<kw library="desktopapp_global_helper" name="Wait And Assert That &quot;${USERHOMEPAGE_BROWSEPROJECTS_BUTTON}&quot; Is Visible">
+<msg level="TRACE" timestamp="20151008 16:01:36.878">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:36.897">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:36.900">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:37.000">Return: None</msg>
+<status endtime="20151008 16:01:37.001" starttime="20151008 16:01:36.899" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:37.008">Return: None</msg>
+<status endtime="20151008 16:01:37.008" starttime="20151008 16:01:36.880" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.044">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.047">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:37.134">PASS: UI matched with reference image:'Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:37.134">Return: None</msg>
+<status endtime="20151008 16:01:37.134" starttime="20151008 16:01:37.046" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:37.135">Return: None</msg>
+<status endtime="20151008 16:01:37.135" starttime="20151008 16:01:37.042" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:37.136">Return: None</msg>
+<status endtime="20151008 16:01:37.136" starttime="20151008 16:01:36.877" status="PASS"></status>
+</kw>
+<kw library="desktopapp_global_helper" name="Wait And Assert That &quot;${USERHOMEPAGE_MYWORK_BUTTON}&quot; Is Visible">
+<msg level="TRACE" timestamp="20151008 16:01:37.143">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.148">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.152">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:37.249">Return: None</msg>
+<status endtime="20151008 16:01:37.250" starttime="20151008 16:01:37.150" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:37.250">Return: None</msg>
+<status endtime="20151008 16:01:37.250" starttime="20151008 16:01:37.145" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.261">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.264">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:37.288">PASS: UI matched with reference image:'Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:37.289">Return: None</msg>
+<status endtime="20151008 16:01:37.290" starttime="20151008 16:01:37.263" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:37.290">Return: None</msg>
+<status endtime="20151008 16:01:37.290" starttime="20151008 16:01:37.255" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:37.291">Return: None</msg>
+<status endtime="20151008 16:01:37.291" starttime="20151008 16:01:37.142" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:37.291">Return: None</msg>
+<status endtime="20151008 16:01:37.291" starttime="20151008 16:01:28.418" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="When User Logs Out From The Desktop App">
+<msg level="TRACE" timestamp="20151008 16:01:37.297">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${USERHOMEPAGE_EXPANDCONTEXTMENU_BUTTON}&quot;">
+<msg level="TRACE" timestamp="20151008 16:01:37.306">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.310">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.336">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:37.446">Return: None</msg>
+<status endtime="20151008 16:01:37.448" starttime="20151008 16:01:37.312" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:37.572">Return: None</msg>
+<status endtime="20151008 16:01:37.573" starttime="20151008 16:01:37.308" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.576">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:37.578">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:38.363">PASS: UI load successful. Reference image:'Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png'.
+[log] CLICK on L(218,128)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:38.363">Return: None</msg>
+<status endtime="20151008 16:01:38.364" starttime="20151008 16:01:37.577" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:38.364">Return: None</msg>
+<status endtime="20151008 16:01:38.365" starttime="20151008 16:01:37.574" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:38.365">Return: None</msg>
+<status endtime="20151008 16:01:38.365" starttime="20151008 16:01:37.298" status="PASS"></status>
+</kw>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${USERHOMEPAGE_LOGOUT_CONTEXTMENU}&quot;">
+<msg level="TRACE" timestamp="20151008 16:01:38.376">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:38.407">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:38.425">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:38.573">Return: None</msg>
+<status endtime="20151008 16:01:38.574" starttime="20151008 16:01:38.412" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:38.575">Return: None</msg>
+<status endtime="20151008 16:01:38.575" starttime="20151008 16:01:38.378" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:38.577">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:38.580">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:39.326">PASS: UI load successful. Reference image:'Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png'.
+[log] CLICK on L(177,268)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:39.326">Return: None</msg>
+<status endtime="20151008 16:01:39.326" starttime="20151008 16:01:38.579" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:39.327">Return: None</msg>
+<status endtime="20151008 16:01:39.330" starttime="20151008 16:01:38.576" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:39.347">Return: None</msg>
+<status endtime="20151008 16:01:39.355" starttime="20151008 16:01:38.366" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="User Confirms Logout">
+<msg level="TRACE" timestamp="20151008 16:01:39.420">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${USERHOMEPAGE_LOGOUTCONFIRMATION_BUTTON}&quot;">
+<msg level="TRACE" timestamp="20151008 16:01:39.422">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:39.430">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:39.434">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:39.555">Return: None</msg>
+<status endtime="20151008 16:01:39.556" starttime="20151008 16:01:39.431" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:39.557">Return: None</msg>
+<status endtime="20151008 16:01:39.557" starttime="20151008 16:01:39.427" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:39.560">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:39.607">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:40.434">PASS: UI load successful. Reference image:'Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png'.
+[log] CLICK on L(579,443)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:40.436">Return: None</msg>
+<status endtime="20151008 16:01:40.437" starttime="20151008 16:01:39.586" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:40.437">Return: None</msg>
+<status endtime="20151008 16:01:40.437" starttime="20151008 16:01:39.558" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:40.438">Return: None</msg>
+<status endtime="20151008 16:01:40.439" starttime="20151008 16:01:39.421" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:40.447">Return: None</msg>
+<status endtime="20151008 16:01:40.451" starttime="20151008 16:01:39.418" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:40.453">Return: None</msg>
+<status endtime="20151008 16:01:40.453" starttime="20151008 16:01:37.296" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="Then User Should Be Successfully Logged Out">
+<msg level="TRACE" timestamp="20151008 16:01:40.455">Arguments: [  ]</msg>
+<kw library="desktopapp_login_page" name="User Home Page Should Not Be Displayed">
+<msg level="TRACE" timestamp="20151008 16:01:40.456">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Assert That Image Should Not Exist">
+<arguments>
+<arg>${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:40.462">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Not Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:40.464">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:43.496">PASS: No matching UI detected on screen in reference to image: 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:43.497">Return: None</msg>
+<status endtime="20151008 16:01:43.498" starttime="20151008 16:01:40.463" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:43.499">Return: None</msg>
+<status endtime="20151008 16:01:43.499" starttime="20151008 16:01:40.457" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Not Exist">
+<arguments>
+<arg>${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:43.502">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Not Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:43.507">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:46.625">PASS: No matching UI detected on screen in reference to image: 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:46.626">Return: None</msg>
+<status endtime="20151008 16:01:46.626" starttime="20151008 16:01:43.506" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:46.626">Return: None</msg>
+<status endtime="20151008 16:01:46.627" starttime="20151008 16:01:43.500" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Not Exist">
+<arguments>
+<arg>${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:46.631">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Not Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:46.652">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:50.270">PASS: No matching UI detected on screen in reference to image: 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:50.274">Return: None</msg>
+<status endtime="20151008 16:01:50.274" starttime="20151008 16:01:46.651" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.276">Return: None</msg>
+<status endtime="20151008 16:01:50.277" starttime="20151008 16:01:46.627" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.277">Return: None</msg>
+<status endtime="20151008 16:01:50.277" starttime="20151008 16:01:40.456" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="User Is In Desktop App Login Page">
+<msg level="TRACE" timestamp="20151008 16:01:50.278">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Switch Application Focus">
+<arguments>
+<arg>${FREELANCER_DESKTOPAPP_NAME}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.281">Arguments: [ ${p_application_name}='Freelancer Desktop App' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Switch App Focus">
+<arguments>
+<arg>${p_application_name}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.300">Arguments: [ 'Freelancer Desktop App' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:50.301">[log] App.focus:  [4120:Freelancer]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:50.302">Return: None</msg>
+<status endtime="20151008 16:01:50.302" starttime="20151008 16:01:50.296" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.302">Return: None</msg>
+<status endtime="20151008 16:01:50.303" starttime="20151008 16:01:50.280" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${DESKTOPAPP_LOGIN_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.313">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.319">Arguments: [ 'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:50.396">Return: None</msg>
+<status endtime="20151008 16:01:50.398" starttime="20151008 16:01:50.317" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.400">Return: None</msg>
+<status endtime="20151008 16:01:50.401" starttime="20151008 16:01:50.306" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${DESKTOPAPP_LOGIN_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.404">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.407">Arguments: [ 'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:50.492">PASS: UI matched with reference image:'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:50.492">Return: None</msg>
+<status endtime="20151008 16:01:50.500" starttime="20151008 16:01:50.406" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.500">Return: None</msg>
+<status endtime="20151008 16:01:50.500" starttime="20151008 16:01:50.401" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.500">Return: None</msg>
+<status endtime="20151008 16:01:50.501" starttime="20151008 16:01:50.278" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.501">Return: None</msg>
+<status endtime="20151008 16:01:50.501" starttime="20151008 16:01:40.454" status="PASS"></status>
+</kw>
+<kw type="teardown" library="sikuli_keywords" name="Close Application">
+<arguments>
+<arg>Freelancer Desktop App</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.505">Arguments: [ ${g_APPLICATION_NAME}='Freelancer Desktop App' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Terminate App">
+<arguments>
+<arg>${g_APPLICATION_NAME}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.531">Arguments: [ 'Freelancer Desktop App' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:50.749">[log] App.close: [4120:freelancer-desktop-app.exe]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:50.750">Return: None</msg>
+<status endtime="20151008 16:01:50.750" starttime="20151008 16:01:50.530" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.750">Return: None</msg>
+<status endtime="20151008 16:01:50.751" starttime="20151008 16:01:50.502" status="PASS"></status>
+</kw>
+<tags>
+<tag>LoginLogoutFunctionalityTest</tag>
+</tags>
+<status critical="yes" endtime="20151008 16:01:50.751" starttime="20151008 16:01:08.763" status="PASS"></status>
+</test>
+<test name="User Should Successfully Login To The Windows Desktop App Via Facebook Login" id="s1-s1-s1-t2">
+<kw type="setup" library="sikuli_keywords" name="Set Default Image Library Path">
+<arguments>
+<arg>${FREELANCER_DESKTOPAPP_IMAGELIBRARY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.755">Arguments: [ ${p_imageLibraryPath}='C:/Collaboration/Resources/Library/ImagesLibrary' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Set Image Library Path">
+<arguments>
+<arg>${p_imageLibraryPath}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.757">Arguments: [ 'C:/Collaboration/Resources/Library/ImagesLibrary' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:50.757">Return: None</msg>
+<status endtime="20151008 16:01:50.758" starttime="20151008 16:01:50.756" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.759">Return: None</msg>
+<status endtime="20151008 16:01:50.759" starttime="20151008 16:01:50.754" status="PASS"></status>
+</kw>
+<kw library="desktop_install_uninstall_dialog" name="Given The &quot;Windows&quot; Desktop App Is Installed">
+<msg level="TRACE" timestamp="20151008 16:01:50.762">Arguments: [  ]</msg>
+<kw library="desktop_install_uninstall_dialog" name="The &quot;${tc_OS}&quot; Desktop App Installer Should Be Successfully Installed">
+<msg level="TRACE" timestamp="20151008 16:01:50.764">Arguments: [  ]</msg>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${tc_OS}' == 'Windows'</arg>
+<arg>Verify If Freelancer Desktop App Is Installed in Windows</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.765">Arguments: [ "'Windows' == 'Windows'" | 'Verify If Freelancer Desktop App Is Installed in Windows' ]</msg>
+<kw library="desktop_install_uninstall_dialog" name="Verify If Freelancer Desktop App Is Installed in Windows">
+<msg level="TRACE" timestamp="20151008 16:01:50.772">Arguments: [  ]</msg>
+<kw library="OperatingSystem" name="Directory Should Not Be Empty">
+<doc>Fails if the specified directory is empty.</doc>
+<arguments>
+<arg>${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.774">Arguments: [ 'C:/Program Files (x86)/Freelancer.com/Freelancer Desktop App' ]</msg>
+<msg level="INFO" html="yes" timestamp="20151008 16:01:50.774">Listing contents of directory '&lt;a href="file://C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App"&gt;C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App&lt;/a&gt;'.</msg>
+<msg level="INFO" html="yes" timestamp="20151008 16:01:50.775">Directory '&lt;a href="file://C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App"&gt;C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App&lt;/a&gt;' contains 11 items.</msg>
+<msg level="TRACE" timestamp="20151008 16:01:50.775">Return: None</msg>
+<status endtime="20151008 16:01:50.776" starttime="20151008 16:01:50.772" status="PASS"></status>
+</kw>
+<kw library="OperatingSystem" name="File Should Exist">
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<arguments>
+<arg>${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.777">Arguments: [ 'C:/Program Files (x86)/Freelancer.com/Freelancer Desktop App/freelancer-desktop-app.exe' ]</msg>
+<msg level="INFO" html="yes" timestamp="20151008 16:01:50.779">File '&lt;a href="file://C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App\freelancer-desktop-app.exe"&gt;C:\Program Files (x86)\Freelancer.com\Freelancer Desktop App\freelancer-desktop-app.exe&lt;/a&gt;' exists</msg>
+<msg level="TRACE" timestamp="20151008 16:01:50.780">Return: None</msg>
+<status endtime="20151008 16:01:50.780" starttime="20151008 16:01:50.777" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.780">Return: None</msg>
+<status endtime="20151008 16:01:50.888" starttime="20151008 16:01:50.771" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.889">Return: None</msg>
+<status endtime="20151008 16:01:50.889" starttime="20151008 16:01:50.765" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.889">Return: None</msg>
+<status endtime="20151008 16:01:50.891" starttime="20151008 16:01:50.763" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:50.891">Return: None</msg>
+<status endtime="20151008 16:01:50.892" starttime="20151008 16:01:50.761" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="When User Runs the &quot;Windows&quot; Desktop App">
+<msg level="TRACE" timestamp="20151008 16:01:50.910">Arguments: [  ]</msg>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${tc_OS}' == 'Windows'</arg>
+<arg>Start Application</arg>
+<arg>${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.917">Arguments: [ "'Windows' == 'Windows'" | 'Start Application' | '${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}' ]</msg>
+<kw library="sikuli_keywords" name="Start Application">
+<arguments>
+<arg>${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.936">Arguments: [ ${g_APPLICATION_PATH}='C:/Program Files (x86)/Freelancer.com/Freelancer Desktop App/freelancer-desktop-app.exe' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Start App">
+<arguments>
+<arg>${g_APPLICATION_PATH}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:50.939">Arguments: [ 'C:/Program Files (x86)/Freelancer.com/Freelancer Desktop App/freelancer-desktop-app.exe' ]</msg>
+<msg level="INFO" timestamp="20151008 16:01:54.338">[log] App.open [3932:]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:54.338">Return: None</msg>
+<status endtime="20151008 16:01:54.339" starttime="20151008 16:01:50.938" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:54.339">Return: None</msg>
+<status endtime="20151008 16:01:54.339" starttime="20151008 16:01:50.923" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:54.339">Return: None</msg>
+<status endtime="20151008 16:01:54.340" starttime="20151008 16:01:50.911" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:54.340">Return: None</msg>
+<status endtime="20151008 16:01:54.340" starttime="20151008 16:01:50.908" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="Then User Should Be Able To View The Update Checker">
+<msg level="TRACE" timestamp="20151008 16:01:54.342">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait In Seconds">
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:54.344">Arguments: [ ${p_seconds}='1' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Set Wait Value">
+<arguments>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:54.347">Arguments: [ '1' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:01:55.376">Return: None</msg>
+<status endtime="20151008 16:01:55.377" starttime="20151008 16:01:54.345" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:55.377">Return: None</msg>
+<status endtime="20151008 16:01:55.377" starttime="20151008 16:01:54.343" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Ignore Error">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Assert That Image Should Exist</arg>
+<arg>${UPDATECHECKER_BACKGROUND}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:55.395">Arguments: [ 'Assert That Image Should Exist' | '${UPDATECHECKER_BACKGROUND}' | '${IMAGE_RECOGNITION_SENSITIVITY}' ]</msg>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${UPDATECHECKER_BACKGROUND}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:55.398">Arguments: [ ${p_image}='Common/UpdateChecker/UPDATECHECKER_BACKGROUND.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:55.403">Arguments: [ 'Common/UpdateChecker/UPDATECHECKER_BACKGROUND.png' | '0.68' ]</msg>
+<msg level="FAIL" timestamp="20151008 16:01:58.687">AssertionError</msg>
+<msg level="DEBUG" timestamp="20151008 16:01:58.689">Traceback (most recent call last):
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 427, in assertImageExists
+    assert exists(self.setImageRecognitionSensitivity(args[0], args[1]))
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 427, in assertImageExists
+    assert exists(self.setImageRecognitionSensitivity(args[0], args[1]))</msg>
+<status endtime="20151008 16:01:58.690" starttime="20151008 16:01:55.399" status="FAIL"></status>
+</kw>
+<status endtime="20151008 16:01:58.694" starttime="20151008 16:01:55.396" status="FAIL"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:01:58.695">Return: (b'FAIL', 'AssertionError')</msg>
+<status endtime="20151008 16:01:58.696" starttime="20151008 16:01:55.394" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Ignore Error">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Assert That Image Should Exist</arg>
+<arg>${UPDATECHECKER_STATUS}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:58.697">Arguments: [ 'Assert That Image Should Exist' | '${UPDATECHECKER_STATUS}' | '${IMAGE_RECOGNITION_SENSITIVITY}' ]</msg>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${UPDATECHECKER_STATUS}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:58.708">Arguments: [ ${p_image}='Common/UpdateChecker/UPDATECHECKER_STATUS.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:01:58.710">Arguments: [ 'Common/UpdateChecker/UPDATECHECKER_STATUS.png' | '0.68' ]</msg>
+<msg level="FAIL" timestamp="20151008 16:02:01.833">AssertionError</msg>
+<msg level="DEBUG" timestamp="20151008 16:02:01.840">Traceback (most recent call last):
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 427, in assertImageExists
+    assert exists(self.setImageRecognitionSensitivity(args[0], args[1]))
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 427, in assertImageExists
+    assert exists(self.setImageRecognitionSensitivity(args[0], args[1]))</msg>
+<status endtime="20151008 16:02:01.841" starttime="20151008 16:01:58.709" status="FAIL"></status>
+</kw>
+<status endtime="20151008 16:02:01.842" starttime="20151008 16:01:58.699" status="FAIL"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:01.842">Return: (b'FAIL', 'AssertionError')</msg>
+<status endtime="20151008 16:02:01.846" starttime="20151008 16:01:58.697" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:01.847">Return: None</msg>
+<status endtime="20151008 16:02:01.894" starttime="20151008 16:01:54.341" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="When User Is In Desktop App Login Page">
+<msg level="TRACE" timestamp="20151008 16:02:01.897">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Switch Application Focus">
+<arguments>
+<arg>${FREELANCER_DESKTOPAPP_NAME}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:01.914">Arguments: [ ${p_application_name}='Freelancer Desktop App' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Switch App Focus">
+<arguments>
+<arg>${p_application_name}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:01.916">Arguments: [ 'Freelancer Desktop App' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:01.917">[log] App.focus:  [5016:Freelancer]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:01.917">Return: None</msg>
+<status endtime="20151008 16:02:01.917" starttime="20151008 16:02:01.915" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:01.946">Return: None</msg>
+<status endtime="20151008 16:02:01.956" starttime="20151008 16:02:01.897" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${DESKTOPAPP_LOGIN_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:01.958">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:01.964">Arguments: [ 'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:02.039">Return: None</msg>
+<status endtime="20151008 16:02:02.041" starttime="20151008 16:02:01.962" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:02.041">Return: None</msg>
+<status endtime="20151008 16:02:02.041" starttime="20151008 16:02:01.956" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${DESKTOPAPP_LOGIN_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:02.046">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:02.049">Arguments: [ 'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:02.125">PASS: UI matched with reference image:'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:02:02.125">Return: None</msg>
+<status endtime="20151008 16:02:02.125" starttime="20151008 16:02:02.048" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:02.125">Return: None</msg>
+<status endtime="20151008 16:02:02.125" starttime="20151008 16:02:02.041" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:02.125">Return: None</msg>
+<status endtime="20151008 16:02:02.126" starttime="20151008 16:02:01.896" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="And User Logs In With &quot;${FREELANCER_FBTEST_EMAIL}&quot; And &quot;${FREELANCER_FBTEST_PASSWORD}&quot; Via Facebook Login">
+<msg level="TRACE" timestamp="20151008 16:02:02.130">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${DESKTOPAPP_FBLOGIN_BUTTON}&quot;">
+<msg level="TRACE" timestamp="20151008 16:02:02.136">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:02.139">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_FBLOGIN_BUTTON.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:02.147">Arguments: [ 'Common/LoginPage/LOGIN_FBLOGIN_BUTTON.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:02.258">Return: None</msg>
+<status endtime="20151008 16:02:02.259" starttime="20151008 16:02:02.141" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:02.259">Return: None</msg>
+<status endtime="20151008 16:02:02.260" starttime="20151008 16:02:02.138" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:02.266">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_FBLOGIN_BUTTON.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:02.268">Arguments: [ 'Common/LoginPage/LOGIN_FBLOGIN_BUTTON.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:03.026">PASS: UI load successful. Reference image:'Common/LoginPage/LOGIN_FBLOGIN_BUTTON.png'.
+[log] CLICK on L(575,261)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:03.034">Return: None</msg>
+<status endtime="20151008 16:02:03.034" starttime="20151008 16:02:02.267" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:03.035">Return: None</msg>
+<status endtime="20151008 16:02:03.035" starttime="20151008 16:02:02.261" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:03.036">Return: None</msg>
+<status endtime="20151008 16:02:03.039" starttime="20151008 16:02:02.131" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="User Inputs FB Username &quot;${tc_USER_NAME}&quot;">
+<msg level="TRACE" timestamp="20151008 16:02:03.045">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Inputs String &quot;${t_userName}&quot; in &quot;${FBLOGIN_EMAILORPHONE_FIELD}&quot; Field">
+<msg level="TRACE" timestamp="20151008 16:02:03.047">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_field}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:03.053">Arguments: [ ${p_image}='Common/FBLoginPage/FBLOGIN_EMAILORPHONE_FIELD.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:03.057">Arguments: [ 'Common/FBLoginPage/FBLOGIN_EMAILORPHONE_FIELD.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:05.924">Return: None</msg>
+<status endtime="20151008 16:02:05.925" starttime="20151008 16:02:03.056" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:05.926">Return: None</msg>
+<status endtime="20151008 16:02:05.926" starttime="20151008 16:02:03.048" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Input Strings In Image XY Coordinates">
+<arguments>
+<arg>${t_field}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>0</arg>
+<arg>0</arg>
+<arg>${t_string}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:05.930">Arguments: [ ${p_image}='Common/FBLoginPage/FBLOGIN_EMAILORPHONE_FIELD.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_xOffset}='0' | ${p_yOffset}='0' | ${p_String}='thecrimsonhog@gmail.com' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Type Text Inside Image XY">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_xOffset}</arg>
+<arg>${p_yOffset}</arg>
+<arg>${p_String}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:05.933">Arguments: [ 'Common/FBLoginPage/FBLOGIN_EMAILORPHONE_FIELD.png' | '0.68' | '0' | '0' | 'thecrimsonhog@gmail.com' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:07.757">PASS: UI load successful. Reference image:'Common/FBLoginPage/FBLOGIN_EMAILORPHONE_FIELD.png'.
+[log] CLICK on L(541,292)@S(0)[0,0 1152x864]
+[log]  TYPE "thecrimsonhog@gmail.com"</msg>
+<msg level="TRACE" timestamp="20151008 16:02:07.758">Return: None</msg>
+<status endtime="20151008 16:02:07.758" starttime="20151008 16:02:05.931" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:07.759">Return: None</msg>
+<status endtime="20151008 16:02:07.759" starttime="20151008 16:02:05.928" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:07.759">Return: None</msg>
+<status endtime="20151008 16:02:07.759" starttime="20151008 16:02:03.046" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:07.764">Return: None</msg>
+<status endtime="20151008 16:02:07.764" starttime="20151008 16:02:03.041" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="User Inputs FB Password&quot;${tc_USER_PASSWORD}&quot;">
+<msg level="TRACE" timestamp="20151008 16:02:07.768">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Inputs String &quot;${t_userPassword}&quot; in &quot;${FBLOGIN_PASSWORD_FIELD}&quot; Field">
+<msg level="TRACE" timestamp="20151008 16:02:07.771">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_field}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:07.773">Arguments: [ ${p_image}='Common/FBLoginPage/FBLOGIN_PASSWORD_FIELD.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:07.776">Arguments: [ 'Common/FBLoginPage/FBLOGIN_PASSWORD_FIELD.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:08.036">Return: None</msg>
+<status endtime="20151008 16:02:08.038" starttime="20151008 16:02:07.775" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:08.039">Return: None</msg>
+<status endtime="20151008 16:02:08.040" starttime="20151008 16:02:07.771" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Input Strings In Image XY Coordinates">
+<arguments>
+<arg>${t_field}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>0</arg>
+<arg>0</arg>
+<arg>${t_string}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:08.058">Arguments: [ ${p_image}='Common/FBLoginPage/FBLOGIN_PASSWORD_FIELD.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_xOffset}='0' | ${p_yOffset}='0' | ${p_String}='PSalm23$$$' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Type Text Inside Image XY">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_xOffset}</arg>
+<arg>${p_yOffset}</arg>
+<arg>${p_String}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:08.061">Arguments: [ 'Common/FBLoginPage/FBLOGIN_PASSWORD_FIELD.png' | '0.68' | '0' | '0' | 'PSalm23$$$' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:09.348">PASS: UI load successful. Reference image:'Common/FBLoginPage/FBLOGIN_PASSWORD_FIELD.png'.
+[log] CLICK on L(543,326)@S(0)[0,0 1152x864]
+[log]  TYPE "PSalm23$$$"</msg>
+<msg level="TRACE" timestamp="20151008 16:02:09.348">Return: None</msg>
+<status endtime="20151008 16:02:09.348" starttime="20151008 16:02:08.060" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:09.349">Return: None</msg>
+<status endtime="20151008 16:02:09.349" starttime="20151008 16:02:08.041" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:09.349">Return: None</msg>
+<status endtime="20151008 16:02:09.349" starttime="20151008 16:02:07.769" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:09.350">Return: None</msg>
+<status endtime="20151008 16:02:09.350" starttime="20151008 16:02:07.765" status="PASS"></status>
+</kw>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${FBLOGIN_LOGIN_BUTTON}&quot;">
+<msg level="TRACE" timestamp="20151008 16:02:09.353">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:09.355">Arguments: [ ${p_image}='Common/FBLoginPage/FBLOGIN_LOGIN_BUTTON.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:09.357">Arguments: [ 'Common/FBLoginPage/FBLOGIN_LOGIN_BUTTON.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:09.459">Return: None</msg>
+<status endtime="20151008 16:02:09.459" starttime="20151008 16:02:09.356" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:09.460">Return: None</msg>
+<status endtime="20151008 16:02:09.460" starttime="20151008 16:02:09.353" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:09.463">Arguments: [ ${p_image}='Common/FBLoginPage/FBLOGIN_LOGIN_BUTTON.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:09.465">Arguments: [ 'Common/FBLoginPage/FBLOGIN_LOGIN_BUTTON.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:10.208">PASS: UI load successful. Reference image:'Common/FBLoginPage/FBLOGIN_LOGIN_BUTTON.png'.
+[log] CLICK on L(681,453)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:10.210">Return: None</msg>
+<status endtime="20151008 16:02:10.210" starttime="20151008 16:02:09.464" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:10.211">Return: None</msg>
+<status endtime="20151008 16:02:10.211" starttime="20151008 16:02:09.461" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:10.211">Return: None</msg>
+<status endtime="20151008 16:02:10.212" starttime="20151008 16:02:09.351" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:10.212">Return: None</msg>
+<status endtime="20151008 16:02:10.220" starttime="20151008 16:02:02.129" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="Then User Should Be Logged In Successfully">
+<msg level="TRACE" timestamp="20151008 16:02:10.225">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="Wait And Assert That &quot;${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}&quot; Is Visible">
+<msg level="TRACE" timestamp="20151008 16:02:10.228">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:10.234">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:10.236">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:19.079">Return: None</msg>
+<status endtime="20151008 16:02:19.081" starttime="20151008 16:02:10.235" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.114">Return: None</msg>
+<status endtime="20151008 16:02:19.116" starttime="20151008 16:02:10.231" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.118">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.120">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:19.513">PASS: UI matched with reference image:'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:02:19.513">Return: None</msg>
+<status endtime="20151008 16:02:19.515" starttime="20151008 16:02:19.119" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.516">Return: None</msg>
+<status endtime="20151008 16:02:19.516" starttime="20151008 16:02:19.116" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.517">Return: None</msg>
+<status endtime="20151008 16:02:19.517" starttime="20151008 16:02:10.226" status="PASS"></status>
+</kw>
+<kw library="desktopapp_global_helper" name="Wait And Assert That &quot;${USERHOMEPAGE_BROWSEPROJECTS_BUTTON}&quot; Is Visible">
+<msg level="TRACE" timestamp="20151008 16:02:19.520">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.521">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.524">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:19.540">Return: None</msg>
+<status endtime="20151008 16:02:19.540" starttime="20151008 16:02:19.522" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.541">Return: None</msg>
+<status endtime="20151008 16:02:19.541" starttime="20151008 16:02:19.520" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.543">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.557">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:19.579">PASS: UI matched with reference image:'Common/UserHomePage/USERHOMEPAGE_BUTTON_BROWSEPROJECTS.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:02:19.580">Return: None</msg>
+<status endtime="20151008 16:02:19.580" starttime="20151008 16:02:19.544" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.581">Return: None</msg>
+<status endtime="20151008 16:02:19.581" starttime="20151008 16:02:19.541" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.581">Return: None</msg>
+<status endtime="20151008 16:02:19.581" starttime="20151008 16:02:19.518" status="PASS"></status>
+</kw>
+<kw library="desktopapp_global_helper" name="Wait And Assert That &quot;${USERHOMEPAGE_MYWORK_BUTTON}&quot; Is Visible">
+<msg level="TRACE" timestamp="20151008 16:02:19.583">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.600">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.604">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:19.620">Return: None</msg>
+<status endtime="20151008 16:02:19.620" starttime="20151008 16:02:19.601" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.646">Return: None</msg>
+<status endtime="20151008 16:02:19.647" starttime="20151008 16:02:19.583" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${t_image}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.654">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.659">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:19.674">PASS: UI matched with reference image:'Common/UserHomePage/USERHOMEPAGE_BUTTON_MYWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:02:19.675">Return: None</msg>
+<status endtime="20151008 16:02:19.675" starttime="20151008 16:02:19.656" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.676">Return: None</msg>
+<status endtime="20151008 16:02:19.677" starttime="20151008 16:02:19.647" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.677">Return: None</msg>
+<status endtime="20151008 16:02:19.677" starttime="20151008 16:02:19.582" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.677">Return: None</msg>
+<status endtime="20151008 16:02:19.678" starttime="20151008 16:02:10.221" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="When User Logs Out From The Desktop App">
+<msg level="TRACE" timestamp="20151008 16:02:19.679">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${USERHOMEPAGE_EXPANDCONTEXTMENU_BUTTON}&quot;">
+<msg level="TRACE" timestamp="20151008 16:02:19.682">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.684">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.705">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:19.814">Return: None</msg>
+<status endtime="20151008 16:02:19.815" starttime="20151008 16:02:19.697" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:19.816">Return: None</msg>
+<status endtime="20151008 16:02:19.816" starttime="20151008 16:02:19.683" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.827">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:19.831">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:20.605">PASS: UI load successful. Reference image:'Common/UserHomePage/USERHOMEPAGE_BUTTON_EXPANDCONTEXTMENU.png'.
+[log] CLICK on L(252,128)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:20.606">Return: None</msg>
+<status endtime="20151008 16:02:20.606" starttime="20151008 16:02:19.829" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:20.607">Return: None</msg>
+<status endtime="20151008 16:02:20.607" starttime="20151008 16:02:19.816" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:20.607">Return: None</msg>
+<status endtime="20151008 16:02:20.608" starttime="20151008 16:02:19.681" status="PASS"></status>
+</kw>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${USERHOMEPAGE_LOGOUT_CONTEXTMENU}&quot;">
+<msg level="TRACE" timestamp="20151008 16:02:20.613">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:20.624">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:20.627">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:20.880">Return: None</msg>
+<status endtime="20151008 16:02:20.882" starttime="20151008 16:02:20.625" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:20.882">Return: None</msg>
+<status endtime="20151008 16:02:20.882" starttime="20151008 16:02:20.622" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:20.884">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:20.886">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:21.703">PASS: UI load successful. Reference image:'Common/UserHomePage/USERHOMEPAGE_CONTEXTMENU_LOGOUT.png'.
+[log] CLICK on L(211,268)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:21.706">Return: None</msg>
+<status endtime="20151008 16:02:21.706" starttime="20151008 16:02:20.885" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:21.706">Return: None</msg>
+<status endtime="20151008 16:02:21.707" starttime="20151008 16:02:20.883" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:21.707">Return: None</msg>
+<status endtime="20151008 16:02:21.708" starttime="20151008 16:02:20.609" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="User Confirms Logout">
+<msg level="TRACE" timestamp="20151008 16:02:21.708">Arguments: [  ]</msg>
+<kw library="desktopapp_global_helper" name="User Clicks &quot;${USERHOMEPAGE_LOGOUTCONFIRMATION_BUTTON}&quot;">
+<msg level="TRACE" timestamp="20151008 16:02:21.711">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:21.713">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:21.715">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:21.733">Return: None</msg>
+<status endtime="20151008 16:02:21.733" starttime="20151008 16:02:21.714" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:21.734">Return: None</msg>
+<status endtime="20151008 16:02:21.735" starttime="20151008 16:02:21.712" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Click Application Image">
+<arguments>
+<arg>${t_UI}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:21.743">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Click Image">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:21.745">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:22.559">PASS: UI load successful. Reference image:'Common/UserHomePage/USERHOMEPAGE_BUTTON_YESIMSURE.png'.
+[log] CLICK on L(579,443)@S(0)[0,0 1152x864]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:22.559">Return: None</msg>
+<status endtime="20151008 16:02:22.559" starttime="20151008 16:02:21.744" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:22.560">Return: None</msg>
+<status endtime="20151008 16:02:22.561" starttime="20151008 16:02:21.735" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:22.561">Return: None</msg>
+<status endtime="20151008 16:02:22.561" starttime="20151008 16:02:21.710" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:22.561">Return: None</msg>
+<status endtime="20151008 16:02:22.562" starttime="20151008 16:02:21.708" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:22.562">Return: None</msg>
+<status endtime="20151008 16:02:22.562" starttime="20151008 16:02:19.679" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="User Should Be Successfully Logged Out">
+<msg level="TRACE" timestamp="20151008 16:02:22.574">Arguments: [  ]</msg>
+<kw library="desktopapp_login_page" name="User Home Page Should Not Be Displayed">
+<msg level="TRACE" timestamp="20151008 16:02:22.577">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Assert That Image Should Not Exist">
+<arguments>
+<arg>${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:22.580">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Not Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:22.609">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:25.637">PASS: No matching UI detected on screen in reference to image: 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:02:25.640">Return: None</msg>
+<status endtime="20151008 16:02:25.640" starttime="20151008 16:02:22.581" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:25.641">Return: None</msg>
+<status endtime="20151008 16:02:25.641" starttime="20151008 16:02:22.579" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Not Exist">
+<arguments>
+<arg>${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:25.643">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Not Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:25.645">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:29.219">PASS: No matching UI detected on screen in reference to image: 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:02:29.220">Return: None</msg>
+<status endtime="20151008 16:02:29.220" starttime="20151008 16:02:25.644" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:29.221">Return: None</msg>
+<status endtime="20151008 16:02:29.222" starttime="20151008 16:02:25.642" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Not Exist">
+<arguments>
+<arg>${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:29.225">Arguments: [ ${p_image}='Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Not Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:29.240">Arguments: [ 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:32.827">PASS: No matching UI detected on screen in reference to image: 'Common/UserHomePage/USERHOMEPAGE_DEFAULT_ZEROCURRENTWORK.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:02:32.828">Return: None</msg>
+<status endtime="20151008 16:02:32.828" starttime="20151008 16:02:29.226" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:32.832">Return: None</msg>
+<status endtime="20151008 16:02:32.832" starttime="20151008 16:02:29.222" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:32.839">Return: None</msg>
+<status endtime="20151008 16:02:32.840" starttime="20151008 16:02:22.576" status="PASS"></status>
+</kw>
+<kw library="desktopapp_login_page" name="User Is In Desktop App Login Page">
+<msg level="TRACE" timestamp="20151008 16:02:32.841">Arguments: [  ]</msg>
+<kw library="sikuli_keywords" name="Switch Application Focus">
+<arguments>
+<arg>${FREELANCER_DESKTOPAPP_NAME}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:32.843">Arguments: [ ${p_application_name}='Freelancer Desktop App' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Switch App Focus">
+<arguments>
+<arg>${p_application_name}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:32.845">Arguments: [ 'Freelancer Desktop App' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:32.851">[log] App.focus:  [5016:Freelancer]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:32.855">Return: None</msg>
+<status endtime="20151008 16:02:32.855" starttime="20151008 16:02:32.844" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:32.856">Return: None</msg>
+<status endtime="20151008 16:02:32.856" starttime="20151008 16:02:32.842" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Wait For Image To Appear">
+<arguments>
+<arg>${DESKTOPAPP_LOGIN_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+<arg>${TIMEOUT}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:32.858">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | ${p_imageRecognitionSensitivity}='0.68' | ${p_seconds}='20' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Wait For Image To Be Visible">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+<arg>${p_seconds}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:32.860">Arguments: [ 'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | '0.68' | '20' ]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:32.929">Return: None</msg>
+<status endtime="20151008 16:02:32.930" starttime="20151008 16:02:32.859" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:32.931">Return: None</msg>
+<status endtime="20151008 16:02:32.931" starttime="20151008 16:02:32.856" status="PASS"></status>
+</kw>
+<kw library="sikuli_keywords" name="Assert That Image Should Exist">
+<arguments>
+<arg>${DESKTOPAPP_LOGIN_PAGE}</arg>
+<arg>${IMAGE_RECOGNITION_SENSITIVITY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:32.934">Arguments: [ ${p_image}='Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | ${p_imageRecognitionSensitivity}='0.68' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Assert Image Exists">
+<arguments>
+<arg>${p_image}</arg>
+<arg>${p_imageRecognitionSensitivity}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:32.936">Arguments: [ 'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png' | '0.68' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:33.033">PASS: UI matched with reference image:'Common/LoginPage/LOGIN_DEFAULT_LOGINPAGE.png'.</msg>
+<msg level="TRACE" timestamp="20151008 16:02:33.033">Return: None</msg>
+<status endtime="20151008 16:02:33.034" starttime="20151008 16:02:32.935" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:33.034">Return: None</msg>
+<status endtime="20151008 16:02:33.034" starttime="20151008 16:02:32.932" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:33.035">Return: None</msg>
+<status endtime="20151008 16:02:33.035" starttime="20151008 16:02:32.840" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:33.035">Return: None</msg>
+<status endtime="20151008 16:02:33.035" starttime="20151008 16:02:22.572" status="PASS"></status>
+</kw>
+<kw type="teardown" library="sikuli_keywords" name="Close Application">
+<arguments>
+<arg>Freelancer Desktop App</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:33.037">Arguments: [ ${g_APPLICATION_NAME}='Freelancer Desktop App' ]</msg>
+<kw library="sikulilibrary.SikuliMethods" name="Terminate App">
+<arguments>
+<arg>${g_APPLICATION_NAME}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20151008 16:02:33.039">Arguments: [ 'Freelancer Desktop App' ]</msg>
+<msg level="INFO" timestamp="20151008 16:02:33.254">[log] App.close: [5016:freelancer-desktop-app.exe]</msg>
+<msg level="TRACE" timestamp="20151008 16:02:33.255">Return: None</msg>
+<status endtime="20151008 16:02:33.255" starttime="20151008 16:02:33.038" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20151008 16:02:33.255">Return: None</msg>
+<status endtime="20151008 16:02:33.255" starttime="20151008 16:02:33.036" status="PASS"></status>
+</kw>
+<tags>
+<tag>LoginLogoutFunctionalityTest</tag>
+</tags>
+<status critical="yes" endtime="20151008 16:02:33.256" starttime="20151008 16:01:50.752" status="PASS"></status>
+</test>
+<doc>This suite covers the test cases for login logout functionality test of the Desktop App</doc>
+<status endtime="20151008 16:02:33.260" starttime="20151008 16:01:03.355" status="PASS"></status>
+</suite>
+<status endtime="20151008 16:02:33.265" starttime="20151008 16:01:03.251" status="PASS"></status>
+</suite>
+<status endtime="20151008 16:02:33.270" starttime="20151008 16:01:02.295" status="PASS"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0">LoginLogoutFunctionalityTest</stat>
+</tag>
+<suite>
+<stat pass="2" fail="0" name="Collaboration" id="s1">Collaboration</stat>
+<stat pass="2" fail="0" name="FunctionalTest" id="s1-s1">Collaboration.FunctionalTest</stat>
+<stat pass="2" fail="0" name="LoginLogoutFunctionalityTest" id="s1-s1-s1">Collaboration.FunctionalTest.LoginLogoutFunctionalityTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

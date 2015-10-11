@@ -1,0 +1,1 @@
+java -jar JarFiles/sikulixapi.jar -r sikulilibrary.sikuli
