@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 2.9.1 (Jython 2.7.0 on java1.8.0_60)" generated="20151008 14:41:45.333">
+<suite source="C:\Workspace\Collaboration\FunctionalTest\LoginLogoutFunctionalityTest.robot" name="LoginLogoutFunctionalityTest" id="s1">
+<test name="User Should Successfully Login To The Windows Desktop App" id="s1-t1">
+<kw type="setup" library="sikuli_keywords" name="Set Default Image Library Path">
+<arguments>
+<arg>${FREELANCER_DESKTOPAPP_IMAGELIBRARY}</arg>
+</arguments>
+<kw name="Set Image Library Path">
+<arguments>
+<arg>${p_imageLibraryPath}</arg>
+</arguments>
+<msg level="FAIL" timestamp="20151008 14:41:49.408">No keyword with name 'Set Image Library Path' found.</msg>
+<status endtime="20151008 14:41:49.409" starttime="20151008 14:41:49.407" status="FAIL"></status>
+</kw>
+<status endtime="20151008 14:41:49.410" starttime="20151008 14:41:49.040" status="FAIL"></status>
+</kw>
+<kw type="teardown" library="sikuli_keywords" name="Close Application">
+<arguments>
+<arg>Freelancer Desktop App</arg>
+</arguments>
+<kw name="Terminate App">
+<arguments>
+<arg>${g_APPLICATION_NAME}</arg>
+</arguments>
+<msg level="FAIL" timestamp="20151008 14:41:49.629">No keyword with name 'Terminate App' found.</msg>
+<status endtime="20151008 14:41:49.634" starttime="20151008 14:41:49.628" status="FAIL"></status>
+</kw>
+<status endtime="20151008 14:41:49.635" starttime="20151008 14:41:49.412" status="FAIL">No keyword with name 'Terminate App' found.</status>
+</kw>
+<tags>
+<tag>LoginLogoutFunctionalityTest</tag>
+</tags>
+<status critical="yes" endtime="20151008 14:41:49.636" starttime="20151008 14:41:49.027" status="FAIL">Setup failed:
+No keyword with name 'Set Image Library Path' found.
+
+Also teardown failed:
+No keyword with name 'Terminate App' found.</status>
+</test>
+<test name="User Should Successfully Login To The Windows Desktop App Via Facebook Login" id="s1-t2">
+<kw type="setup" library="sikuli_keywords" name="Set Default Image Library Path">
+<arguments>
+<arg>${FREELANCER_DESKTOPAPP_IMAGELIBRARY}</arg>
+</arguments>
+<kw name="Set Image Library Path">
+<arguments>
+<arg>${p_imageLibraryPath}</arg>
+</arguments>
+<msg level="FAIL" timestamp="20151008 14:41:49.771">No keyword with name 'Set Image Library Path' found.</msg>
+<status endtime="20151008 14:41:49.771" starttime="20151008 14:41:49.769" status="FAIL"></status>
+</kw>
+<status endtime="20151008 14:41:49.775" starttime="20151008 14:41:49.649" status="FAIL"></status>
+</kw>
+<kw type="teardown" library="sikuli_keywords" name="Close Application">
+<arguments>
+<arg>Freelancer Desktop App</arg>
+</arguments>
+<kw name="Terminate App">
+<arguments>
+<arg>${g_APPLICATION_NAME}</arg>
+</arguments>
+<msg level="FAIL" timestamp="20151008 14:41:49.950">No keyword with name 'Terminate App' found.</msg>
+<status endtime="20151008 14:41:49.951" starttime="20151008 14:41:49.949" status="FAIL"></status>
+</kw>
+<status endtime="20151008 14:41:49.952" starttime="20151008 14:41:49.779" status="FAIL">No keyword with name 'Terminate App' found.</status>
+</kw>
+<tags>
+<tag>LoginLogoutFunctionalityTest</tag>
+</tags>
+<status critical="yes" endtime="20151008 14:41:49.953" starttime="20151008 14:41:49.645" status="FAIL">Setup failed:
+No keyword with name 'Set Image Library Path' found.
+
+Also teardown failed:
+No keyword with name 'Terminate App' found.</status>
+</test>
+<doc>This suite covers the test cases for login logout functionality test of the Desktop App</doc>
+<status endtime="20151008 14:41:49.960" starttime="20151008 14:41:45.348" status="FAIL"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2">Critical Tests</stat>
+<stat pass="0" fail="2">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="2">LoginLogoutFunctionalityTest</stat>
+</tag>
+<suite>
+<stat pass="0" fail="2" name="LoginLogoutFunctionalityTest" id="s1">LoginLogoutFunctionalityTest</stat>
+</suite>
+</statistics>
+<errors>
+<msg level="ERROR" timestamp="20151008 14:41:48.224">Error in file 'C:\Workspace\Collaboration\Resources\CommonResources\sikuli_keywords.robot': Importing test library 'sikulilibrary.SikuliMethods' failed: NameError: name 'App' is not defined
+Traceback (most recent call last):
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 11, in &lt;module&gt;
+    class SikuliMethods(BaseLogger):
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 12, in SikuliMethods
+    activeWindow = App.focusedWindow()
+PYTHONPATH:
+  C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli
+  C:\jython2.7.0\Lib\site-packages\robotframework-2.9.1-py2.7.egg
+  C:\SikuliX\jython-standalone-2.7.0.jar
+  C:\jython2.7.0\Lib
+  __classpath__
+  __pyclasspath__/
+  C:\jython2.7.0\Lib\site-packages
+CLASSPATH:
+  C:\jython2.7.0\jython.jar
+  C:\Workspace\Collaboration\Resources\Library\JarFiles\sikulixapi.jar</msg>
+<msg level="ERROR" timestamp="20151008 14:41:48.387">Error in file 'C:\Workspace\Collaboration\Resources\PageResources\desktopapp_login_page.robot': Importing test library 'sikulilibrary.SikuliMethods' failed: NameError: name 'App' is not defined
+Traceback (most recent call last):
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 11, in &lt;module&gt;
+    class SikuliMethods(BaseLogger):
+  File "C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli\sikulilibrary.py", line 12, in SikuliMethods
+    activeWindow = App.focusedWindow()
+PYTHONPATH:
+  C:\Workspace\Collaboration\Resources\Library\sikulilibrary.sikuli
+  C:\jython2.7.0\Lib\site-packages\robotframework-2.9.1-py2.7.egg
+  C:\SikuliX\jython-standalone-2.7.0.jar
+  C:\jython2.7.0\Lib
+  __classpath__
+  __pyclasspath__/
+  C:\jython2.7.0\Lib\site-packages
+CLASSPATH:
+  C:\jython2.7.0\jython.jar
+  C:\Workspace\Collaboration\Resources\Library\JarFiles\sikulixapi.jar</msg>
+</errors>
+</robot>
