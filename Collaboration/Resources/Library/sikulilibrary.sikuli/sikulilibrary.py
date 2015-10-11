@@ -73,7 +73,7 @@ class SikuliMethods(BaseLogger):
 			wait(1)
 		except FindFailed:
 			self.log.failed("Unable to set focus to the application: '%s'." % (argApp,))
-			
+	# Terminates the specified app based on parameter argAppName
 	def terminateApp(self, argAppName):
 		#App.open("taskkill /f /im %s" % (argAppName,))
 		try:
@@ -81,28 +81,28 @@ class SikuliMethods(BaseLogger):
 			myApp.close()
 		except FindFailed:
 			self.log.failed("Unable to close the application: '%s'." % (argApp,))
-		
-	def setImageRecognitionSensitivity(self, *args):
+	# Sets the image recognition sensitivity to either exact or user defined value.	
+	def setImageRecognitionSensitivity(self, *args): #arguments: image file, sensitivit from 0.00 to 0.99
 		if(args[1] == "exact"):
 			return Pattern(args[0]).exact()
 		else:
 			return Pattern(args[0]).similar(float(args[1]))
-
+	# Gets the application region of a specific application as defined in argApp
 	def getAppRegion(self, argApp):
 		myApp = self.getApp(argApp)
-		myApp.focus(); wait(1)
-		appWindow = myApp.window()
-		appRegion = (appWindow.getX(), appWindow.getY(), appWindow.getW(), appWindow.getH())
+		myApp.focus(); wait(1) # sets the application in focus
+		appWindow = myApp.window() # gets the application window
+		appRegion = (appWindow.getX(), appWindow.getY(), appWindow.getW(), appWindow.getH()) # gets the region of the application in focus
 		return appRegion
-	
-	def getActiveWindowsRegion(self):
-	    activeWindowsRegion = (activeWindow.getX(), activeWindow.getY(), activeWindow.getW(), activeWindow.getH())
-	    return activeWindowsRegion
-
+	# Gets the region of the application or window that is in focus
+	def getActiveWindowsCoordinates(self):
+	    activeWindowsCoordinates = (activeWindow.getX(), activeWindow.getY(), activeWindow.getW(), activeWindow.getH())
+	    return activeWindowsCoordinates
+	# Takes screenshot of either the whole window or the application in focus
 	def captureWindow(self, *args):
 		try:
 			if(args[0] == "active"):
-				region = self.getActiveWindowsRegion()
+				region = self.getActiveWindowsCoordinates()
 			else:
 				region = self.getAppRegion(args[0])
 			imgScreenshot = capture(*region)
@@ -110,30 +110,51 @@ class SikuliMethods(BaseLogger):
 		except FindFailed:
 			self.log.failed("Application '%s' is not detected." % (args[0],))
 
-	def by_y(match):
-		return match.y
-
 	def getImageRegionCoordinates(self, *args):
 		s.find(self.setImageRecognitionSensitivity(args[0], args[1]))
 		match = s.getLastMatch()
 		self.appCoordinates = (match.getX(), match.getY(), match.getW(), match.getH())
 		appRegion = Region(*self.appCoordinates)
-	
+	# Returns an array of all the matching images in screen
+	# args[0] = image path; args[1] = image sensitivity from 0.00 to 0.99
+
+	# Get the cound of all matching images based on the recognition sensitivity
+	# args[0] = image path; args[1] = image sensitivity from 0.00 to 0.99
+	def getImageCount(self, *args):
+	    return len(getAllMatchingImages(self.setImageRecognitionSensitivity(args[0], args[1])))
+
+	# Gets the matching pattern in the regio and sort it from top > down
+	def imageOrder(match):
+		return match.x, match.y
+
+	# args[0] image or pattern to search, args[1] image sensitivity
 	def getPatternsInRegion(self, *args):
-		reg = self.getImageRegionCoordinates(args[0], args[1])
-		listOfPatterns = []
-		listOfSortedPatterns = []
-		with reg.findAll(args[2]) as foundImages:
-			while foundImages.hasNext():
-				listOfPatterns.append(foundImages.next())
-			listOfSortedPatterns = sorted(listOfPatterns, key=by_y)
+	    activeWindowsCoordinates = self.getActiveWindowsCoordinates()
+	    activeWindowsRegion = Region(*activeWindowsCoordinates)
+	    img = self.setImageRecognitionSensitivity(args[0], args[1]))
+		listOfPatterns = []; listOfSortedPatterns = []
+	    foundPatterns = activeWindowsRegion.findAll(img)
+		while foundPatterns.hasNext():
+			listOfPatterns.append(foundPatterns.next())
+		listOfSortedPatterns = sorted(listOfPatterns, key=imageOrder)
 		return listOfSortedPatterns
-	
+
+	# args[0] reference Image, args[1] image or pattern to search, args[2] image sensitivity
+	def getPatternsInReferenceImage(self, *args):
+		reg = self.getImageRegionCoordinates(args[0], args[1])
+		listOfPatterns = []; listOfSortedPatterns = []
+		foundPatterns =  reg.findAll(args[2])
+		while foundPatterns.hasNext():
+			listOfPatterns.append(foundPatterns.next())
+		listOfSortedPatterns = sorted(listOfPatterns, key=imageOrder)
+		return listOfSortedPatterns
+
+	# Clicks all matching patterns in a region
 	def clickAllPatternsInRegion(self, *args):
 		for pattern in getPatternsInRegion(args[0], args[1], args[2]):
 			click(pattern)
-			
-	def getImageBasedOnReferenceImage(self, *args): # arguments: spatial location, reference image, target image, image recogniton sensitivity,
+	# Checks the pattern based on spatial location of another image		
+	def getImageBasedOnReferenceImage(self, *args): # arguments: spatial location, reference image, target image, image recogniton sensitivity
 		imgRecognitionSensitivity = args[3]
 		if (args[0] == "left"):
 			return activeWindow.find(self.setImageRecognitionSensitivity(args[1], imgRecognitionSensitivity)).left().find(self.setImageRecognitionSensitivity(args[2], imgRecognitionSensitivity))
@@ -149,7 +170,7 @@ class SikuliMethods(BaseLogger):
 			return activeWindow.find(self.setImageRecognitionSensitivity(args[1], imgRecognitionSensitivity)).nearby().find(self.setImageRecognitionSensitivity(args[2], imgRecognitionSensitivity))
 		else:
 			return None
-		
+	# Sets the user action on the target image
 	def userActionOnImageBasedOnReference(self, *args): # arguments: action, spatial location, reference image, target image, image sensitivity
 		if (args[0] == "click"):
 			click(self.getImageBasedOnReferenceImage(args[1], args[2], args[3], args[4]))
@@ -163,23 +184,23 @@ class SikuliMethods(BaseLogger):
 			paste(self.getImageBasedOnReferenceImage(args[1], args[2], args[3], args[4]), args[5])
 		elif (args[0] == "dragDrop"):
 			dragDrop(self.getImageBasedOnReferenceImage(args[1], args[2], args[3], args[4]), args[5])
-			
+	# Sets the wait value		
 	def setWaitValue(self, argDelay):
 		s.wait(int(argDelay))
-
+	# Sets the sleep value
 	def setSleepValue(self, argSleep):
 		s.sleep(int(argSleep))
-		
-	def verifyApp(self, *args):
-		# check application
-		if activeWindow.exists(args[0]):
+	# Verifies if the application is active
+	def verifyAppIsRunning(self, *args):
+		try:
+			activeWindow.exists(args[0])
 			self.log.passed("'%s' window appeared." % (args[1],))
-		else:
+			MyApp = App(args[2])
+			MyApp.focus()
+			wait(1)
+		except FindFailed:
 			self.log.failed("No visible '%s' window." % (args[1],))
-		MyApp = App(args[2])
-		MyApp.focus()
-		wait(1)
-				
+
 	def getXLSCellValue(self, *args):
 		xls_file = str(args[0])
 		xls_workbook = xlrd.open_workbook(xls_file)
