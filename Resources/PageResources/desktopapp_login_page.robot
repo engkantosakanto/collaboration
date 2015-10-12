@@ -85,13 +85,13 @@ The "${tc_DESKTOPAPP_PROMPT}" Alert Should Be Displayed
 
 # ${p_fieldName} is either DesktopApp Username, DesktopApp Password, FBLogin Username or FBLogin Password
 User Inputs "${p_fieldValue}" In "${p_fieldName}" Field
-    User Inputs String "${$p_fieldName}" in "${${p_fieldName}_FIELD}" Field
+    User Inputs String "${$p_fieldValue}" in "${${p_fieldName}_FIELD}" Field
 
-User Inputs Password"${t_userPassword}"
-    User Inputs String "${t_userPassword}" in "${DESKTOPAPP_PASSWORD_FIELD}" Field
+#User Inputs Password"${t_userPassword}"
+#    User Inputs String "${t_userPassword}" in "${DESKTOPAPP_PASSWORD_FIELD}" Field
 
-User Inputs FB Username "${t_userName}"
-    User Inputs String "${t_userName}" in "${FBLOGIN_USERNAME_FIELD}" Field
+#User Inputs FB Username "${t_userName}"
+#    User Inputs String "${t_userName}" in "${FBLOGIN_USERNAME_FIELD}" Field
 
-User Inputs FB Password "${t_userPassword}"
-    User Inputs String "${t_userPassword}" in "${FBLOGIN_PASSWORD_FIELD}" Field
+#User Inputs FB Password "${t_userPassword}"
+#    User Inputs String "${t_userPassword}" in "${FBLOGIN_PASSWORD_FIELD}" Field
