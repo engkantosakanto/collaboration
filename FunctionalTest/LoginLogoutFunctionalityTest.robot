@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     This suite covers the test cases for login logout functionality test of the Desktop App
 Test Setup        Set Default Image Library Path    ${FREELANCER_DESKTOPAPP_IMAGELIBRARY}
-Test Teardown     Close Application    Freelancer Desktop App
+#Test Teardown     Close Application    Freelancer Desktop App
 Default Tags      LoginLogoutFunctionalityTest    Functional
 Library           OperatingSystem
 Resource          ../Resources/CommonResources/desktopapp_global_helper.robot
