@@ -63,8 +63,8 @@ User Should Not Be Able To Login
     User Home Page Should Not Be Displayed
 
 User Should Be Successfully Logged Out
-    User Home Page Should Not Be Displayed
     User Is In Desktop App Login Page
+    User Home Page Should Not Be Displayed
 
 User Home Page Should Not Be Displayed
     Assert That Image Should Not Exist    ${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
