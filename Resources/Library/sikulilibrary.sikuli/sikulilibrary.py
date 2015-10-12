@@ -177,9 +177,9 @@ class SikuliMethods(BaseLogger):
 
     # args[0] reference Image, args[1] image or pattern to search, args[2] image sensitivity
     def getPatternsInReferenceImage(self, *args):
-        reg = self.getImageRegion(args[0], args[1])
+        reg = self.getImageRegion(args[0], args[2])
         listOfPatterns = []; listOfSortedPatterns = []
-        foundPatterns =  reg.findAll(args[2])
+        foundPatterns =  reg.findAll(self.setImageRecognitionSensitivity(args[1], args[2]))
         while foundPatterns.hasNext():
             listOfPatterns.append(foundPatterns.next())
         listOfSortedPatterns = sorted(listOfPatterns, key=imageOrder)
@@ -293,7 +293,7 @@ class SikuliMethods(BaseLogger):
     
     # Simulates key press
     def pressKey(self, argKey):
-        #s.focus()
+        argKey = str(argKey)
         activeWindow = App.focusedWindow(); wait(0.5)
         if (argKey == "ENTER"):
             activeWindow.type(Key.ENTER)

@@ -123,7 +123,8 @@ Confirm SUT OS
 
 Open Application
     [Arguments]    ${g_APPLICATION_PATH}
-    Wait Until Keyword Succeeds    ${TIMEOUT}    ${RETRY_INTERVAL}    Start App    ${g_APPLICATION_PATH}
+    Wait Until Keyword Succeeds    ${TIMEOUT}    ${RETRY_INTERVAL}
+    ...    Start App    ${g_APPLICATION_PATH}
 
 Sleep In Seconds
     [Arguments]    ${p_seconds}
@@ -138,9 +139,19 @@ Get Pattern Count In Active Region
     [Arguments]    ${p_image}    ${p_imageRecognitionSensitivity}
     Get Pattern Count In Region    ${p_image}    ${p_imageRecognitionSensitivity}
 
+Click xth Pattern In Active Region
+    [Arguments]    ${p_image}    ${p_imageRecognitionSensitivity}    ${p_index}
+    Click A Pattern In Reference Image    ${p_image}    ${p_imageRecognitionSensitivity}    ${p_index}
+
 Get Pattern Count In Reference Image
-    [Arguments]    ${p_image}    ${p_imageRecognitionSensitivity}
-    Get Pattern Count In Region    ${p_image}    ${p_imageRecognitionSensitivity}
+    [Arguments]    ${p_referenceImage}    ${p_targetImage}    ${p_imageRecognitionSensitivity}
+    Get Pattern Count In Image    ${p_referenceImage}    ${p_targetImage}    ${p_imageRecognitionSensitivity}
+
+Click xth Pattern In Reference Image
+    [Arguments]    ${p_referenceImage}    ${p_targetImage}    ${p_imageRecognitionSensitivity}    ${p_index}
+    Click A Pattern In Reference Image    ${p_referenceImage}    ${p_targetImage}
+    ...    ${p_imageRecognitionSensitivity}    ${p_index}
+
 # =============================================== #
 #                       Wait                      #
 # =============================================== #
@@ -178,31 +189,7 @@ Switch Application Focus
 # =============================================== #
 
 Press "${p_keyboardKey}" key
-    Run Keyword If    '${p_keyboardKey}' == 'Delete'    Press Key    DELETE
-    ...    ELSE IF    '${p_keyboardKey}' == 'Enter'    Press Key    ENTER
-    ...    ELSE IF    '${p_keyboardKey}' == 'Esc'    Press Key    ESC
-    ...    ELSE IF    '${p_keyboardKey}' == 'Space'    Press Key    SPACE
-    ...    ELSE IF    '${p_keyboardKey}' == 'Tab'    Press Key    TAB
-    ...    ELSE IF    '${p_keyboardKey}' == 'Down'    Press Key    DOWN
-    ...    ELSE IF    '${p_keyboardKey}' == 'Left arrow'    Press Key    LEFT
-    ...    ELSE IF    '${p_keyboardKey}' == 'Right arrow'    Press Key    RIGHT
-    ...    ELSE IF    '${p_keyboardKey}' == 'Insert'    Press Key    INSERT
-    ...    ELSE IF    '${p_keyboardKey}' == 'Page up'    Press Key    PAGE_UP
-    ...    ELSE IF    '${p_keyboardKey}' == 'Home'    Press Key    HOME
-    ...    ELSE IF    '${p_keyboardKey}' == 'End'    Press Key    END
-    ...    ELSE IF    '${p_keyboardKey}' == 'F1'    Press Key    F1
-    ...    ELSE IF    '${p_keyboardKey}' == 'F2'    Press Key    F2
-    ...    ELSE IF    '${p_keyboardKey}' == 'F3'    Press Key    F3
-    ...    ELSE IF    '${p_keyboardKey}' == 'F4'    Press Key    F4
-    ...    ELSE IF    '${p_keyboardKey}' == 'F5'    Press Key    F5
-    ...    ELSE IF    '${p_keyboardKey}' == 'F6'    Press Key    F6
-    ...    ELSE IF    '${p_keyboardKey}' == 'F7'    Press Key    F7
-    ...    ELSE IF    '${p_keyboardKey}' == 'F8'    Press Key    F8
-    ...    ELSE IF    '${p_keyboardKey}' == 'F9'    Press Key    F9
-    ...    ELSE IF    '${p_keyboardKey}' == 'F10'    Press Key    F10
-    ...    ELSE IF    '${p_keyboardKey}' == 'F11'    Press Key    F11
-    ...    ELSE IF    '${p_keyboardKey}' == 'F12'    Press Key    F12
-    ...    ELSE    Press Key    ${p_keyboardKey}
+    Press Key    ${p_keyboardKey}
 
 Press CTRL + ALT + "${p_keyboardKey}"
     Press Ctrl Alt Plus Key    ${p_keyboardKey}
