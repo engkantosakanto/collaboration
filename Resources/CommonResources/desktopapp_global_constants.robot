@@ -1,7 +1,6 @@
 *** Variables ***
 #************************ Login Accounts ************************
-${FREELANCER_TEST_EMAIL}    fagunday@freelancer.com
-${FREELANCER_TEST_PASSWORD}    PSalm23$$$
+${FREELANCER_TEST_PASSWORD}    free123
 ${FREELANCER_TEST_INCORRECT_PASSWORD}    IncorrectPassword
 ${FREELANCER_FBTEST_EMAIL}    thecrimsonhog@gmail.com
 ${FREELANCER_FBTEST_PASSWORD}    PSalm23$$$
