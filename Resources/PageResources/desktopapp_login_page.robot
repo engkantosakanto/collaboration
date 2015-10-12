@@ -57,7 +57,7 @@ User Should Be Able To View The Update Checker
     ...    Assert That Image Should Exist    ${UPDATECHECKER_STATUS}    ${IMAGE_RECOGNITION_SENSITIVITY}
 
 User Should Be Logged In Successfully
-    User Home Page Is Desplayed
+    User Home Page Is Displayed
 
 User Should Not Be Able To Login
     User Home Page Should Not Be Displayed
