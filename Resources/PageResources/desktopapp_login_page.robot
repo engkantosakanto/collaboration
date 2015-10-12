@@ -41,6 +41,11 @@ User Is In Desktop App Login Page
     Wait For Image To Appear    ${DESKTOPAPP_LOGIN_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}    ${TIMEOUT}
     Assert That Image Should Exist    ${DESKTOPAPP_LOGIN_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
 
+User Home Page Is Displayed
+    Wait And Assert That "${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}" Is Visible
+    Wait And Assert That "${USERHOMEPAGE_BROWSEPROJECTS_BUTTON}" Is Visible
+    Wait And Assert That "${USERHOMEPAGE_MYWORK_BUTTON}" Is Visible
+
 # =============================================== #
 #                       Then                      #
 # =============================================== #
@@ -52,9 +57,7 @@ User Should Be Able To View The Update Checker
     ...    Assert That Image Should Exist    ${UPDATECHECKER_STATUS}    ${IMAGE_RECOGNITION_SENSITIVITY}
 
 User Should Be Logged In Successfully
-    Wait And Assert That "${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}" Is Visible
-    Wait And Assert That "${USERHOMEPAGE_BROWSEPROJECTS_BUTTON}" Is Visible
-    Wait And Assert That "${USERHOMEPAGE_MYWORK_BUTTON}" Is Visible
+    User Home Page Is Desplayed
 
 User Should Not Be Able To Login
     User Home Page Should Not Be Displayed
@@ -65,8 +68,8 @@ User Should Be Successfully Logged Out
 
 User Home Page Should Not Be Displayed
     Assert That Image Should Not Exist    ${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
-    Assert That Image Should Not Exist    ${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
-    Assert That Image Should Not Exist    ${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
+    Assert That Image Should Not Exist    ${USERHOMEPAGE_BROWSEPROJECTS_BUTTON}    ${IMAGE_RECOGNITION_SENSITIVITY}
+    Assert That Image Should Not Exist    ${USERHOMEPAGE_MYWORK_BUTTON}    ${IMAGE_RECOGNITION_SENSITIVITY}
 
 
 User Confirms Logout
@@ -87,11 +90,5 @@ The "${tc_DESKTOPAPP_PROMPT}" Alert Should Be Displayed
 User Inputs "${p_fieldValue}" In "${p_fieldName}" Field
     User Inputs String "${p_fieldValue}" in "${${p_fieldName}_FIELD}" Field
 
-#User Inputs Password"${t_userPassword}"
-#    User Inputs String "${t_userPassword}" in "${DESKTOPAPP_PASSWORD_FIELD}" Field
-
-#User Inputs FB Username "${t_userName}"
-#    User Inputs String "${t_userName}" in "${FBLOGIN_USERNAME_FIELD}" Field
-
-#User Inputs FB Password "${t_userPassword}"
-#    User Inputs String "${t_userPassword}" in "${FBLOGIN_PASSWORD_FIELD}" Field
+Desktop App "${p_alertType}" Alert Should Be Launched
+    Wait And Assert That "${DESKTOPAPP_LOGIN_${p_alertType}_ALERT}" Is Visible
