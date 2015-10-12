@@ -6,11 +6,15 @@ Resource          ../Resources/PageResources/desktopapp_login_page.robot
 Resource          ../Resources/PageResources/desktop_install_uninstall_dialog.robot
 Resource          ../Resources/CommonResources/sikuli_keywords.robot
 
+*** Variables ***
+${freelancerUsername}    botFLNFTDTLogin
+#${freelancerFBUsername}    testuser+botFLNFTDTLogin@freelancer.com
+
 *** Test Cases ***
 Freelancer Desktop App Should Be Successfully Downloaded In Windows
     [Setup]    User Opens the "Firefox" Web Browser
     Given User Goes To "${WEB_DESKTOPAPP_DOWNLOAD_URL}" Page Via "Firefox" Browser
-    And User Logs In With Valid Username "${FREELANCER_TEST_EMAIL}" And Password "${FREELANCER_TEST_PASSWORD}"
+    And User Logs In With Valid Username "${freelancerUsername}" And Password "${FREELANCER_TEST_PASSWORD}"
     And User Selects "Windows" Operating System
     When User Downloads the "Windows" Desktop App Installer
     Then The "Windows" Desktop App Installer Should Be Successfully Downloaded
@@ -27,7 +31,7 @@ User Should Successfully Login To The Windows Desktop App
     When User Runs the "Windows" Desktop App
     Then User Should Be Able To View The Update Checker
     When User Is In Desktop App Login Page
-    And User Logs In With "${FREELANCER_TEST_EMAIL}" And "${FREELANCER_TEST_PASSWORD}"
+    And User Logs In With "${freelancerUsername}" And "${FREELANCER_TEST_PASSWORD}"
     Then User Should Be Logged In Successfully
     When User Logs Out From The Desktop App
     Then User Should Be Successfully Logged Out

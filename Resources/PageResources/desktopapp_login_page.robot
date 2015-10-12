@@ -8,21 +8,42 @@ Resource          ../Variables/desktopapp_login_constants.robot
 Resource          ../CommonResources/desktopapp_global_constants.robot
 
 *** Keywords ***
-User Runs the "${tc_OS}" Desktop App
-    Run Keyword If    '${tc_OS}' == 'Windows'
-    ...    Start Application    ${WINDOWS_APPLICATION_INSTALLATION_DIRECTORY}/${WINDOWS_DESKTOPAPP_EXECUTABLE}
+# =============================================== #
+#                       Given                     #
+# =============================================== #
 
 User Logs In With "${tc_USER_NAME}" And "${tc_USER_PASSWORD}"
-    User Inputs Username "${tc_USER_NAME}"
-    User Inputs Password"${tc_USER_PASSWORD}"
+    User Inputs "${tc_USER_NAME}" In "Desktop App Username" Field
+    User Inputs "${tc_USER_PASSWORD}" In "Desktop App Password" Field
     User Clicks "${DESKTOPAPP_LOGIN_BUTTON}"
 
 User Logs In With "${tc_USER_NAME}" And "${tc_USER_PASSWORD}" Via Facebook Login
     User Clicks "${DESKTOPAPP_FBLOGIN_BUTTON}"
-    User Inputs FB Username "${tc_USER_NAME}"
-    User Inputs FB Password"${tc_USER_PASSWORD}"
+    User Inputs "${tc_USER_NAME}" In "FBLogin Username" Field
+    User Inputs "${tc_USER_PASSWORD}" In "FBLogin Password" Field
     User Clicks "${FBLOGIN_LOGIN_BUTTON}"
 
+# =============================================== #
+#                       When                      #
+# =============================================== #
+
+User Logs Out From The Desktop App
+    User Clicks "${USERHOMEPAGE_EXPANDCONTEXTMENU_BUTTON}"
+    User Clicks "${USERHOMEPAGE_LOGOUT_CONTEXTMENU}"
+    User Confirms Logout
+
+User Runs the "${tc_OS}" Desktop App
+    Run Keyword If    '${tc_OS}' == 'Windows'
+    ...    Open Application    ${${tc_OS}_APPLICATION_INSTALLATION_DIRECTORY}/${${tc_OS}_DESKTOPAPP_EXECUTABLE}
+
+User Is In Desktop App Login Page
+    Switch Application Focus    ${FREELANCER_DESKTOPAPP_NAME}
+    Wait For Image To Appear    ${DESKTOPAPP_LOGIN_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}    ${TIMEOUT}
+    Assert That Image Should Exist    ${DESKTOPAPP_LOGIN_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
+
+# =============================================== #
+#                       Then                      #
+# =============================================== #
 User Should Be Able To View The Update Checker
     Wait In Seconds    1
     Run Keyword And Ignore Error
@@ -38,36 +59,15 @@ User Should Be Logged In Successfully
 User Should Not Be Able To Login
     User Home Page Should Not Be Displayed
 
-User Logs Out From The Desktop App
-    User Clicks "${USERHOMEPAGE_EXPANDCONTEXTMENU_BUTTON}"
-    User Clicks "${USERHOMEPAGE_LOGOUT_CONTEXTMENU}"
-    User Confirms Logout
-
 User Should Be Successfully Logged Out
     User Home Page Should Not Be Displayed
     User Is In Desktop App Login Page
-
-User Inputs Username "${t_userName}"
-    User Inputs String "${t_userName}" in "${DESKTOPAPP_USERNAME_FIELD}" Field
-
-User Inputs Password"${t_userPassword}"
-    User Inputs String "${t_userPassword}" in "${DESKTOPAPP_PASSWORD_FIELD}" Field
-
-User Inputs FB Username "${t_userName}"
-    User Inputs String "${t_userName}" in "${FBLOGIN_EMAILORPHONE_FIELD}" Field
-
-User Inputs FB Password"${t_userPassword}"
-    User Inputs String "${t_userPassword}" in "${FBLOGIN_PASSWORD_FIELD}" Field
 
 User Home Page Should Not Be Displayed
     Assert That Image Should Not Exist    ${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
     Assert That Image Should Not Exist    ${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
     Assert That Image Should Not Exist    ${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
 
-User Is In Desktop App Login Page
-    Switch Application Focus    ${FREELANCER_DESKTOPAPP_NAME}
-    Wait For Image To Appear    ${DESKTOPAPP_LOGIN_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}    ${TIMEOUT}
-    Assert That Image Should Exist    ${DESKTOPAPP_LOGIN_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
 
 User Confirms Logout
     User Clicks "${USERHOMEPAGE_LOGOUTCONFIRMATION_BUTTON}"
@@ -78,3 +78,20 @@ User Closes The Desktop App
 The "${tc_DESKTOPAPP_PROMPT}" Alert Should Be Displayed
     Run Keyword If    '${tc_DESKTOPAPP_PROMPT}' == 'Invalid username or password.'
     ...    Wait And Assert That "${DESKTOPAPP_LOGIN_INVALIDCREDENTIALS_ALERT}" Is Visible
+
+# =============================================== #
+#              Internal Keywords                  #
+# =============================================== #
+
+# ${p_fieldName} is either DesktopApp Username, DesktopApp Password, FBLogin Username or FBLogin Password
+User Inputs "${p_fieldValue}" In "${p_fieldName}" Field
+    User Inputs String "${$p_fieldName}" in "${${p_fieldName}_FIELD}" Field
+
+User Inputs Password"${t_userPassword}"
+    User Inputs String "${t_userPassword}" in "${DESKTOPAPP_PASSWORD_FIELD}" Field
+
+User Inputs FB Username "${t_userName}"
+    User Inputs String "${t_userName}" in "${FBLOGIN_USERNAME_FIELD}" Field
+
+User Inputs FB Password "${t_userPassword}"
+    User Inputs String "${t_userPassword}" in "${FBLOGIN_PASSWORD_FIELD}" Field

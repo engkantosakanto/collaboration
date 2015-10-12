@@ -4,7 +4,7 @@ Resource          desktopapp_global_constants.robot
 
 *** Keywords ***
 # =============================================== #
-#    Image assertions    #
+#                    Image assertions             #
 # =============================================== #
 Assert That Image Should Exist
     [Arguments]    ${p_image}    ${p_imageRecognitionSensitivity}
@@ -152,6 +152,10 @@ Click xth Pattern In Reference Image
     Click A Pattern In Reference Image    ${p_referenceImage}    ${p_targetImage}
     ...    ${p_imageRecognitionSensitivity}    ${p_index}
 
+Set Default Image Library Path
+    [Arguments]    ${p_imageLibraryPath}
+    Set Image Library Path    ${p_imageLibraryPath}
+
 # =============================================== #
 #                       Wait                      #
 # =============================================== #
@@ -167,6 +171,10 @@ Wait For Image To Disappear
 Wait In Seconds
     [Arguments]    ${p_seconds}
     Set Wait Value    ${p_seconds}
+
+# =============================================== #
+#                    Run Scripts                  #
+# =============================================== #
 
 Run Script
     [Arguments]    ${p_script}
@@ -197,19 +205,15 @@ Press CTRL + ALT + "${p_keyboardKey}"
 Press CTRL + Shift + "${p_keyboardKey}"
     Press Ctrl Shift Plus Key    ${p_keyboardKey}
 
-Press a Key N Times
-    [Arguments]    ${p_keyboardKey}    ${PRESS_COUNT}
+Press "${p_keyboardKey}" Key "${PRESS_COUNT}" Times
     Press Key N Times    ${p_keyboardKey}    ${PRESS_COUNT}
 
 Press CTRL + "${p_keyboardKey}"
     Press Ctrl Plus Key    ${p_keyboardKey}
 
-Press Windows Key+ "${p_keyboardKey}"
+Press Windows Key + "${p_keyboardKey}"
     Press Windows Key Plus Key    ${p_keyboardKey}
 
 Press ALT + "${p_keyboardKey}"
     Press ALT Plus Key    ${p_keyboardKey}
 
-Set Default Image Library Path
-    [Arguments]    ${p_imageLibraryPath}
-    Set Image Library Path    ${p_imageLibraryPath}

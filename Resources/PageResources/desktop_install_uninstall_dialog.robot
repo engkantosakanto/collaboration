@@ -7,14 +7,9 @@ Resource          ../Variables/dektopapp_install_uninstall_constants.robot
 Resource          ../Variables/desktopapp_login_constants.robot
 
 *** Keywords ***
-    #********************************** Given **********************************
-User Opens the "${tc_WEB_BROWSER}" Web Browser
-    Run Keyword If    '${tc_WEB_BROWSER}' == 'Firefox'
-    ...    Initialize Firefox Web Browser
-
-User Clears The "${tc_WEB_BROWSER}" Browser Cache
-    Run Keyword If    '${tc_WEB_BROWSER}' == 'Firefox'
-    ...    Clear Firefox Browser Cache
+# =============================================== #
+#                       Given                     #
+# =============================================== #
 
 User Goes To "${tc_URL}" Page Via "${tc_WEB_BROWSER}" Browser
     Run Keyword If    '${tc_WEB_BROWSER}' == 'Firefox'
@@ -30,6 +25,26 @@ User Logs In With Valid Username "${tc_USER_NAME}" And Password "${tc_USER_PASSW
 User Selects "${tc_OS}" Operating System
     Run Keyword If    '${tc_OS}' == 'Windows'
     ...    Select Windows Desktop App Installer From Options
+
+User Opens the "${tc_WEB_BROWSER}" Web Browser
+    Run Keyword If    '${tc_WEB_BROWSER}' == 'Firefox'
+    ...    Initialize Firefox Web Browser
+
+User Clears The "${tc_WEB_BROWSER}" Browser Cache
+    Run Keyword If    '${tc_WEB_BROWSER}' == 'Firefox'
+    ...    Clear Firefox Browser Cache
+
+The "${tc_OS}" Desktop App Installer Exists
+    The "${tc_OS}" Desktop App Installer Should Be Successfully Downloaded
+
+
+The "${tc_OS}" Desktop App Is Installed
+    The "${tc_OS}" Desktop App Installer Should Be Successfully Installed
+
+
+# =============================================== #
+#                       When                      #
+# =============================================== #
 
 User Downloads The "${tc_OS}" Desktop App Installer
     User Clicks "${WEB_DESKTOPAPPDOWNLOAD_BUTTON}"
@@ -51,27 +66,20 @@ User Uninstalls The "${tc_OS}" Desktop App
     ...    Run "${tc_OS}" Uninstallation
 
 User Deletes The "${tc_OS}" Desktop App Installer
-    Run Keyword If    '${tc_OS}' == 'Windows'
-    ...    Delete The Windows Desktop App Installe
+    Run Keyword If    '${tc_OS}' == 'WIN7' or '${tc_OS}' == 'WIN8'
+    ...    Delete The Windows Desktop App Installer
 
-The "${tc_OS}" Desktop App Installer Exists
-    The "${tc_OS}" Desktop App Installer Should Be Successfully Downloaded
-
-The "${tc_OS}" Desktop App Is Installed
-    The "${tc_OS}" Desktop App Installer Should Be Successfully Installed
-
-#********************************** Then **********************************
+# =============================================== #
+#                       Then                      #
+# =============================================== #
 
 The "${tc_OS}" Desktop App Installer Should Be Successfully Downloaded
     The "${tc_OS}" Desktop App Installer Should Exist
     The File Size of Downloaded "${tc_OS}" Desktop App Installer Should be Correct
 
 The File Size of Downloaded "${tc_OS}" Desktop App Installer Should be Correct
-    ${t_desktopInstallerFileSize}=    Run Keyword If    '${tc_OS}' == 'Windows'
-    ...    Get File Size Of Windows Desktop App Installer
-    Convert To String    ${t_desktopInstallerFileSize}
     Run Keyword If    '${tc_OS}' == 'Windows'
-    ...    Should Be Equal As Strings    ${t_desktopInstallerFileSize}    ${WINDOWS_DESKTOPAPP_FILESIZE}
+    ...    Should Be Equal As Strings    ${tc_WINDOWS_DESKTOP_APP_FILE_SIZE}    ${WINDOWS_DESKTOPAPP_FILESIZE}
 
 The "${tc_OS}" Desktop App Installer Should Exist
     Run Keyword If    '${tc_OS}' == 'Windows'
@@ -85,11 +93,9 @@ The "${tc_OS}" Desktop App Installer Should Be Successfully Uninstalled
     Run Keyword If    '${tc_OS}' == 'Windows'
     ...    Verify If Freelancer Desktop App Is Not Installed in Windows
 
-Visit "${tc_URL}" Via Firefox
-    User Inputs String "${tc_URL}" in "${FIREFOX_URL_FIELD}" Field
-    Press "Enter" Key
-
-#********************************** Internal Keywords **********************************
+# =============================================== #
+#                Internal Keywords                #
+# =============================================== #
 
 Clear Firefox Browser Cache
     Press ALT + "S"
@@ -105,8 +111,7 @@ Close Firefox Browser
     Press CTRL + "w"
 
 Run "${p_OS}" Setup
-    ${tc _${p_OS}_LOCAL_DOWNLOAD_DIRECTORY}    Run Keyword    Get The Windows Local Download Directory
-    Start Process    ${tc _${p_OS}_LOCAL_DOWNLOAD_DIRECTORY}/${${p_OS}_DESKTOPAPP_INSTALLER}
+    Start Process    ${tc_${p_OS}_LOCAL_DOWNLOAD_DIRECTORY}/${${p_OS}_DESKTOPAPP_INSTALLER}
     Set Application Focus    Setup - Freelancer Desktop App
     Repeat Keyword    4 times    User Clicks "${${p_OS}_SETUP_NEXT_BUTTON}"
     User Clicks "${${p_OS}_SETUP_INSTALL_BUTTON}"
@@ -145,23 +150,25 @@ Initialize Firefox Web Browser
     Clear Firefox Browser Cache
 
 Installer Should Exist In Windows Download Directory
-    ${tc _WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}=    Run Keyword
-    ...    Get The Windows Local Download Directory
-    File Should Exist    ${tc _WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}/${WINDOWS_DESKTOPAPP_INSTALLER}
+    File Should Exist    ${tc_WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}/${WINDOWS_DESKTOPAPP_INSTALLER}
 
 Get File Size Of Windows Desktop App Installer
-    ${tc _WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}=    Run Keyword
-    ...    Get The Windows Local Download Directory
-    ${tc_WINDOWS_DESKTOP_APP_FILE_SIZE}=
-    ...    Get File Size    ${tc _WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}/${WINDOWS_DESKTOPAPP_INSTALLER}
-    [Return]    ${tc_WINDOWS_DESKTOP_APP_FILE_SIZE}
+    ${t_windowsDesktopAppInstallerFileSize}=
+    ...    Get File Size    ${tc_WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}/${WINDOWS_DESKTOPAPP_INSTALLER}
+    ${t_windowsDesktopAppInstallerFileSize}=    Convert To String    ${t_windowsDesktopAppInstallerFileSize}
+    Set Test Variable    ${tc_WINDOWS_DESKTOP_APP_FILE_SIZE}    ${t_windowsDesktopAppInstallerFileSize}
 
-Delete The Windows Desktop App Installe
-    ${tc _WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}=    Run Keyword
-    ...    Get The Windows Local Download Directory
-    Remove File    ${tc _WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}/${WINDOWS_DESKTOPAPP_INSTALLER}
+Delete The Windows Desktop App Installer
+    Remove File    ${tc_WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}/${WINDOWS_DESKTOPAPP_INSTALLER}
 
 Download The Windows Desktop App Installer
-    ${tc _WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}    Run Keyword
-    ...    Get The Windows Local Download Directory
-    Wait Until Removed    ${tc _WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}/${WINDOWS_DESKTOPAPP_PART_FILE}
+    Wait Until Removed    ${tc_WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}/${WINDOWS_DESKTOPAPP_PART_FILE}
+
+Visit "${tc_URL}" Via Firefox
+    User Inputs String "${tc_URL}" in "${FIREFOX_URL_FIELD}" Field
+    Press "Enter" Key
+
+Get The Windows Local Download Directory
+    ${t_userName}=    Run    echo %username%
+    ${t_windowsdownloaddirectory}=    Set Variable    C:/Users/${t_userName.strip()}/Downloads
+    Set Test Variable    ${tc_WINDOWS_LOCAL_DOWNLOAD_DIRECTORY}    ${t_windowsdownloaddirectory}

@@ -12,7 +12,7 @@ Resource          ../Resources/CommonResources/desktopapp_global_constants.robot
 
 *** Variables ***
 ${freelancerUsername}    botFLNFTDTLogin
-${freelancerFBUsername}    testuser+botFLNFTDTLogin@freelancer.com
+#${freelancerFBUsername}    testuser+botFLNFTDTLogin@freelancer.com
 
 *** Test Cases ***
 User Should Successfully Login To The Windows Desktop App

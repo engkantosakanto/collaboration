@@ -17,13 +17,9 @@ Maximize Windows
     Press Windows Key + "UP"
 
 Close "${t_browser}" Browser
-    Run Keyword If    '${t_browser}' == 'Mozilla Firefox'    Press CTRL + "W"
+    Run Keyword If    '${t_browser}' == 'Mozilla Firefox'
+    ...    Press CTRL + "W"
     ...    ELSE    Close Application    ${t_browser}
-
-Get The Windows Local Download Directory
-    ${t_userName}=    Run    echo %username%
-    ${t_windows_download_directory}=    Set Variable    C:/Users/${t_userName.strip()}/Downloads
-    [Return]    ${t_windows_download_directory}
 
 Wait And Assert That "${t_image}" Is Visible
     Wait For Image To Appear    ${t_image}    ${IMAGE_RECOGNITION_SENSITIVITY}    ${TIMEOUT}
