@@ -68,7 +68,7 @@ User Should Be Successfully Logged Out
 
 User Home Page Should Not Be Displayed
     Assert That Image Should Not Exist    ${USERHOMEPAGE_ZEROCURRENTWORK_PAGE}    ${IMAGE_RECOGNITION_SENSITIVITY}
-    Assert That Image Should Not Exist    ${USERHOMEPAGE_BROWSEPROJECTS_BUTTON}    ${IMAGE_RECOGNITION_SENSITIVITY}
+    Assert That Image Should Not Exist    ${USERHOMEPAGE_BROWSEPROJECTS_BUTTON}    0.80
     Assert That Image Should Not Exist    ${USERHOMEPAGE_MYWORK_BUTTON}    ${IMAGE_RECOGNITION_SENSITIVITY}
 
 
