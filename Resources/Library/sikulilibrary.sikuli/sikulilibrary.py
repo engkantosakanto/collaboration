@@ -1,4 +1,3 @@
-
 # This file contains the SikuliMethods class containing the most commonly used Sikuli methods.
 
 from __future__ import with_statement
@@ -14,17 +13,21 @@ Settings.OcrTextRead = True
 # Global declaration of variables used for the Region function
 s = Screen()
 
+# SikuliMethod class using the BaseLogger class from logger.py
 class SikuliMethods(BaseLogger):
     # Initializes the visible region to the computer resolution.
     def __init__(self):
         self.appCoordinates = (SCREEN.getX(), SCREEN.getY(), SCREEN.getW(), SCREEN.getH())
-    # Function to set the path for the image library.
+
+    # Sets the path of the image library.
     def setImageLibraryPath(self, argImgLibraryPath):
         addImagePath(argImgLibraryPath)
+
     # Replace string with another string. Arguments arg[0] string, 
     # arg[1] string to be replaced, arg[2] string that will replace arg[1]
     def replaceText(self, *args):
         return args[0].replace(args[1], args[2])
+
     # Function to starts the application.
     def startApp(self, argApp):
         try:
@@ -36,15 +39,19 @@ class SikuliMethods(BaseLogger):
         except FindFailed:
             self.log.failed("Unable to launch the application: '%s'." % (argApp,))
 
+    # Returns the application as set in argApp
     def getApp(self, argApp):
         myApp = App(str(argApp))
         return myApp
+
     # Function to get the OS, ex: WINDOWS, MAC, UNIX
     def getEnvOS(self):
         return str(Env.getOS())
+
     # Get OS version
     def getEnvOSVersion(self):
         return str(Env.getOSVersion())
+
     # Check if OS version is correct based on the argument argOS
     def confirmOS(self, argOS):
         if(argOS == "Windows"):
@@ -61,9 +68,11 @@ class SikuliMethods(BaseLogger):
             switchApp(str(argApp))
         except FindFailed:
             self.log.failed("Unable to swith to application: '%s'." % (argApp,))
+
     # Runs a command in command line
     def runCommand(self, argCommand):
         run(argCommand)
+
     # Sets focus based on specified application name
     def setAppFocus(self, argAppName):
         try:
@@ -72,6 +81,7 @@ class SikuliMethods(BaseLogger):
             wait(1)
         except FindFailed:
             self.log.failed("Unable to set focus to the application: '%s'." % (argApp,))
+
     # Terminates the specified app based on parameter argAppName
     def terminateApp(self, argAppName):
         #App.open("taskkill /f /im %s" % (argAppName,))
@@ -80,19 +90,21 @@ class SikuliMethods(BaseLogger):
             myApp.close()
         except FindFailed:
             self.log.failed("Unable to close the application: '%s'." % (argApp,))
+
     # Sets the image recognition sensitivity to either exact or user defined value. 
     def setImageRecognitionSensitivity(self, *args): #arguments: image file, sensitivit from 0.00 to 0.99
         if(args[1] == "exact"):
-            return Pattern(args[0]).exact()
+            return Pattern(args[0]).exact() #The highest sensitivity; returns an error even with 1 pixel difference in pattern
         else:
             return Pattern(args[0]).similar(float(args[1]))
-    # Gets the application region of a specific application as defined in argApp
-    def getAppRegion(self, argApp):
+
+    # Gets the coordinates of a specific application as defined in argApp
+    def getAppCoordinates(self, argApp):
         myApp = self.getApp(argApp)
         myApp.focus(); wait(1) # sets the application in focus
         appWindow = myApp.window() # gets the application window
-        appRegion = (appWindow.getX(), appWindow.getY(), appWindow.getW(), appWindow.getH()) # gets the region of the application in focus
-        return appRegion
+        appCoordinates = (appWindow.getX(), appWindow.getY(), appWindow.getW(), appWindow.getH()) # gets the region of the application in focus
+        return appCoordinates
 
     # Takes screenshot of either the whole window or the application in focus
     def captureWindow(self, *args):
@@ -100,39 +112,29 @@ class SikuliMethods(BaseLogger):
             if(args[0] == "active"):
                 region = self.getActiveWindowsCoordinates()
             else:
-                region = self.getAppRegion(args[0])
+                region = self.getAppCoordinates(args[0])
             imgScreenshot = capture(*region)
             shutil.copy(imgScreenshot, str(args[1]))
         except FindFailed:
             self.log.failed("Application '%s' is not detected." % (args[0],))
-    # Gets the region of the application or window that is in focus
-    def getActiveWindowsCoordinates(self):
-        activeWindow = App.focusedWindow();
-        activeWindowsCoordinates = (activeWindow.getX(), activeWindow.getY(), activeWindow.getW(), activeWindow.getH())
-        setROI(*activeWindowsCoordinates) #limit the search region
-        return activeWindowsCoordinates
-
-    def getActiveWindowsRegion(self):
-        activeWindowsRegion = Region(*self.getActiveWindowsCoordinates())
-        return activeWindowsRegion
-
-    def getImageCoordinates(self, *args):
-        s.find(self.setImageRecognitionSensitivity(args[0], args[1]))
-        match = s.getLastMatch()
-        self.appCoordinates = (match.getX(), match.getY(), match.getW(), match.getH())
-        appRegion = Region(*self.appCoordinates)
-
-    def getImageRegion(self, *args):
-        activeWindowsRegion = Region(*self.getImageCoordinates(*args))
-        return activeWindowsRegion
-
 
     # Gets the matching pattern in the regio and sort it from top > down
     def imageOrder(match):
         return match.x, match.y
 
-    # args[0] image or pattern to search, args[1] image sensitivity
-    # Returns an array of all the matching images in screen
+    # Returns the coordinates of the application or window that is in focus.
+    def getActiveWindowsCoordinates(self):
+        activeWindow = App.focusedWindow();
+        activeWindowsCoordinates = (activeWindow.getX(), activeWindow.getY(), activeWindow.getW(), activeWindow.getH())
+        return activeWindowsCoordinates
+
+    # Returns the region of the application or window that is in focus.
+    def getActiveWindowsRegion(self):
+        setROI(*self.getActiveWindowsCoordinates()) #limit the search region
+        activeWindowsRegion = Region(*self.getActiveWindowsCoordinates())
+        return activeWindowsRegion
+
+    # Returns an array of all the matching images in the region of the window in focus
     # args[0] = image path; args[1] = image sensitivity from 0.00 to 0.99
     def getPatternsInRegion(self, *args):
         activeWindowsCoordinates = self.getActiveWindowsCoordinates()
@@ -150,14 +152,28 @@ class SikuliMethods(BaseLogger):
             click(pattern)
 
     # Clicks all matching patterns in a region
+    # args[0] = image path; args[1] = image sensitivity from 0.00 to 0.99; 
+    # args[2] = is the index number
     def clickAPatternInRegion(self, *args):
-        self.getPatternsInRegion(*args)[args[2]].click()
+        imgIndex = int(args[2]) - 1
+        self.getPatternsInRegion(*args)[imgIndex].click()
 
     # Get the count of all matching images based on the recognition sensitivity
     # args[0] = image path; args[1] = image sensitivity from 0.00 to 0.99
-    def getImageCountInRegion(self, *args):
+    def getPatternCountInRegion(self, *args):
         return len(self.getPatternsInRegion(*args))
 
+    # Returns the coordinates of the region values that matched with the reference image.
+    def getImageCoordinates(self, *args):
+        s.find(self.setImageRecognitionSensitivity(args[0], args[1]))
+        match = s.getLastMatch()
+        imgCoordinates = (match.getX(), match.getY(), match.getW(), match.getH())
+        return imgCoordinates
+
+    # Returns the region values that matched with the reference image.
+    def getImageRegion(self, *args):
+        imgRegion = Region(*self.getImageCoordinates(*args))
+        return imgRegion
 
     # args[0] reference Image, args[1] image or pattern to search, args[2] image sensitivity
     def getPatternsInReferenceImage(self, *args):
@@ -173,6 +189,19 @@ class SikuliMethods(BaseLogger):
     def clickAllPatternsInReferenceImage(self, *args):
         for pattern in self.getPatternsInReferenceImage(*args):
             click(pattern)
+
+    # Clicks all matching patterns in a reference image
+    # args[0] = image path; args[1] = image sensitivity from 0.00 to 0.99; 
+    # args[2] = is the index number
+    def clickAPatternInReferenceImage(self, *args):
+        imgIndex = int(args[2]) - 1
+        self.getPatternsInReferenceImage(*args)[imgIndex].click()
+
+    # Get the count of all matching images based on the recognition sensitivity
+    # args[0] = image path; args[1] = image sensitivity from 0.00 to 0.99
+    def getPatternCountInImage(self, *args):
+        return len(self.getPatternsInReferenceImage(*args))
+
     # Checks the pattern based on spatial location of another image     
     def getImageBasedOnReferenceImage(self, *args): # arguments: spatial location, reference image, target image, image recogniton sensitivity
         imgRecognitionSensitivity = args[3]
@@ -192,6 +221,7 @@ class SikuliMethods(BaseLogger):
             return targetImage.nearby().referenceImage
         else:
             return None
+
     # Sets the user action on the target image
     def userActionOnImageBasedOnReference(self, *args): # arguments: action, spatial location, reference image, target image, image sensitivity
         img = self.getImageBasedOnReferenceImage(args[1], args[2], args[3], args[4])
@@ -210,9 +240,11 @@ class SikuliMethods(BaseLogger):
     # Sets the wait value       
     def setWaitValue(self, argDelay):
         s.wait(int(argDelay))
+
     # Sets the sleep value
     def setSleepValue(self, argSleep):
         s.sleep(int(argSleep))
+
     # Verifies if the application is active
     def verifyAppIsRunning(self, *args):
         try:
@@ -225,6 +257,7 @@ class SikuliMethods(BaseLogger):
         except FindFailed:
             self.log.failed("No visible '%s' window." % (args[1],))
 
+    # Returns the cell value from excel
     def getXLSCellValue(self, *args):
         xls_file = str(args[0])
         xls_workbook = xlrd.open_workbook(xls_file)
@@ -232,6 +265,8 @@ class SikuliMethods(BaseLogger):
         cellValue = xls_sheet.cell(int(args[2]),int(args[3])).value
         return cellValue
 
+    # Verify if a pattern as set in args[0] exists
+    # Arguments: args[0] = image path; args[1] = image sensitivity from 0.00 to 0.99
     def imageExists(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
@@ -240,6 +275,9 @@ class SikuliMethods(BaseLogger):
         except FindFailed:
             return False
             
+    # Verify if a pattern as set in args[1] exists in reference with pattern args[2]
+    # Arguments: args[0] = spatial location; args[1] = target image path; args[2] = reference image path
+    # args[3] = image recognistion sensitivity
     def imageExistsInReferenceToAnotherImage(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
@@ -247,11 +285,13 @@ class SikuliMethods(BaseLogger):
             return True
         except FindFailed:
             return False
-        
+    
+    # Gets result from clipboard, simulates copy action
     def getResultFromClipboard(self):
         type('c', KEY_CTRL)
         return str(Env.getClipboard())
-        
+    
+    # Simulates key press
     def pressKey(self, argKey):
         #s.focus()
         activeWindow = App.focusedWindow(); wait(0.5)
@@ -309,7 +349,8 @@ class SikuliMethods(BaseLogger):
             activeWindow.type(Key.F12)
         else:
             activeWindow.type(argKey)
-            
+
+    # Simulates Ctrl + Alt + <key>
     def pressCtrlAltPlusKey(self, argKey):
         #self.setFocus()
         activeWindow = App.focusedWindow(); wait(0.5)
@@ -319,7 +360,8 @@ class SikuliMethods(BaseLogger):
             activeWindow.type(Key.ESC, KeyModifier.CTRL | KeyModifier.ALT)
         else:
             sleep(1)
-            
+    
+    # Simulates Ctrl + Shift + <key>
     def pressCtrlShiftPlusKey(self, argKey):
         #self.setFocus()
         activeWindow = App.focusedWindow(); wait(0.5)
@@ -327,7 +369,8 @@ class SikuliMethods(BaseLogger):
             activeWindow.type(Key.DELETE, KeyModifier.CTRL | KeyModifier.SHIFT)
         else:
             sleep(1)
-            
+    
+    # Simulates Windows + Shift + <key>
     def pressWindowsKeyPlusKey(self, argKey):
         #self.setFocus()
         activeWindow = App.focusedWindow(); wait(0.5)
@@ -337,19 +380,23 @@ class SikuliMethods(BaseLogger):
             activeWindow.type(Key.DOWN, KeyModifier.KEY_WIN)
         else:
             sleep(1)
-            
+
+    # Simulates Ctrl + <key>
     def pressCtrlPlusKey(self, argKey):
         #self.setFocus()
         activeWindow = App.focusedWindow(); wait(0.5)
         activeWindow.type(argKey, KeyModifier.CTRL)
         sleep(1)
-        
+    
+    # Simulates Alt + <key>
     def pressAltPlusKey(self, argKey):
         #self.setFocus()
         activeWindow = App.focusedWindow(); wait(0.5)
         activeWindow.type(argKey, KeyModifier.ALT)
         sleep(1)
-            
+
+    # Simulates key press at a specified number
+    # arguments: arg[0] = keyboard key; args[1] : count
     def pressKeyNTimes(self, *args):
       if(int(args[1]) < 1):
         wait(0)
@@ -358,14 +405,17 @@ class SikuliMethods(BaseLogger):
         while( pressCount <= int(args[1])):
           self.pressKey(args[0])
           pressCount = pressCount + 1
-            
+
+    # Simulates Ctrl + A, then Delete
     def clearTextField(self):
         self.pressCtrlPlusKey("a")
         self.pressKey("DELETE")
-        
+    
+    # Simulates Ctrl + Delete
     def clearComboboxField(self):
         self.pressCtrlPlusKey("DELETE")
 
+    # Highlight a region
     def highlightRegion(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
@@ -377,10 +427,11 @@ class SikuliMethods(BaseLogger):
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
 
+    # Simulates mouse hovert a specific region or matching pattern
     def hoverAtImage(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.hover(self.setImageRecognitionSensitivity(args[0], args[1]))
+            activeWindow.hover(self.setImageRecognitionSensitivity(*args))
             #self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
@@ -396,7 +447,7 @@ class SikuliMethods(BaseLogger):
     def dragImage(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.drag(self.setImageRecognitionSensitivity(args[0], args[1]))
+            activeWindow.drag(self.setImageRecognitionSensitivity(*args))
             #self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
@@ -404,16 +455,14 @@ class SikuliMethods(BaseLogger):
     def dropToImage(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.dropAT(self.setImageRecognitionSensitivity(args[0], args[1]))
-            #self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
+            activeWindow.dropAT(self.setImageRecognitionSensitivity(*args))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
 
     def clickImage(self, *args):
         try:
-            setROI(*self.getActiveWindowsCoordinates())
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.click(self.setImageRecognitionSensitivity(args[0], args[1]))
+            activeWindow.click(self.setImageRecognitionSensitivity(*args))
             self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
@@ -421,7 +470,7 @@ class SikuliMethods(BaseLogger):
     def clickImageinXY(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.click(self.setImageRecognitionSensitivity(args[0], args[1]).targetOffset(int(args[2]), int(args[3])))
+            activeWindow.click(self.setImageRecognitionSensitivity(*args).targetOffset(int(args[2]), int(args[3])))
             self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
@@ -429,7 +478,7 @@ class SikuliMethods(BaseLogger):
     def doubleClickImage(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.doubleClick(self.setImageRecognitionSensitivity(args[0], args[1]))
+            activeWindow.doubleClick(self.setImageRecognitionSensitivity(*args))
             self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (argImage,))
@@ -437,7 +486,7 @@ class SikuliMethods(BaseLogger):
     def doubleClickImageinXY(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.doubleClick(self.setImageRecognitionSensitivity(args[0], args[1]).targetOffset(int(args[2]), int(args[3])))
+            activeWindow.doubleClick(self.setImageRecognitionSensitivity(*args).targetOffset(int(args[2]), int(args[3])))
             self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
@@ -445,7 +494,7 @@ class SikuliMethods(BaseLogger):
     def rightClickImage(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.rightClick(self.setImageRecognitionSensitivity(args[0], args[1]))
+            activeWindow.rightClick(self.setImageRecognitionSensitivity(*args))
             self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (argImage,))  
@@ -453,7 +502,7 @@ class SikuliMethods(BaseLogger):
     def rightClickImageinXY(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.rightClick(self.setImageRecognitionSensitivity(args[0], args[1]).targetOffset(int(args[2]), int(args[3])))
+            activeWindow.rightClick(self.setImageRecognitionSensitivity(*args).targetOffset(int(args[2]), int(args[3])))
             self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
@@ -461,11 +510,11 @@ class SikuliMethods(BaseLogger):
     def waitForImageToBeVisible(self, *args):
         try:
             setROI(*self.getActiveWindowsCoordinates())
-            #activeWindow = self.getActiveWindowsRegion(); wait(0.5)
             if (args[1] == 'FOREVER'):          
-                s.wait(self.setImageRecognitionSensitivity(args[0], args[1]), FOREVER)
+                s.wait(self.setImageRecognitionSensitivity(*args), FOREVER)
             else:
-                s.wait(self.setImageRecognitionSensitivity(args[0], args[1]), int(args[2]))
+                s.wait(self.setImageRecognitionSensitivity(*args), int(args[2]))
+            self.log.passed("UI matched with reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
         
@@ -473,9 +522,9 @@ class SikuliMethods(BaseLogger):
         try:
             activeWindow = App.focusedWindow()
             if (args[1] == 'FOREVER'):          
-                activeWindow.waitVanish(self.setImageRecognitionSensitivity(args[0], args[1]), FOREVER)
+                activeWindow.waitVanish(self.setImageRecognitionSensitivity(*args), FOREVER)
             else:
-                activeWindow.waitVanish(self.setImageRecognitionSensitivity(args[0], args[1]), int(args[2]))
+                activeWindow.waitVanish(self.setImageRecognitionSensitivity(*args), int(args[2]))
         except FindFailed:
             self.log.failed("Matching UI with '%s' persists." % (args[0],))
         
@@ -486,7 +535,7 @@ class SikuliMethods(BaseLogger):
     def typeTextInsideImageXY(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.type(self.setImageRecognitionSensitivity(args[0], args[1]).targetOffset(int(args[2]), int(args[3])), args[4])
+            activeWindow.type(self.setImageRecognitionSensitivity(*args).targetOffset(int(args[2]), int(args[3])), args[4])
             self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
@@ -498,7 +547,7 @@ class SikuliMethods(BaseLogger):
     def pasteTextInsideImageXY(self, *args):
         try:
             activeWindow = self.getActiveWindowsRegion()
-            activeWindow.paste(self.setImageRecognitionSensitivity(args[0], args[1]).targetOffset(int(args[2]), int(args[3])), args[4])
+            activeWindow.paste(self.setImageRecognitionSensitivity(*args).targetOffset(int(args[2]), int(args[3])), args[4])
             self.log.passed("UI load successful. Reference image:'%s'." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))   
@@ -506,17 +555,24 @@ class SikuliMethods(BaseLogger):
     def assertImageExists(self, *args): #arguments: image(path or filename), image recogniton sensitivity,
         try:
             setROI(*self.getActiveWindowsCoordinates())
-            assert exists(self.setImageRecognitionSensitivity(*args))
-            self.log.passed("UI matched with reference image:'%s'." % (args[0],))
+            if self.imageExists(*args):
+            #assert exists(self.setImageRecognitionSensitivity(*args))
+                self.log.passed("UI matched with reference image:'%s'." % (args[0],))
+            else:
+                self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
         except FindFailed:
             self.log.failed("No matching UI detected on screen or '%s' does not exist." % (args[0],))
 
     def assertImageNotExists(self, *args): #arguments: image(path or filename), image recogniton sensitivity,
+        setFindFailedResponse(ABORT)
         try:
             setROI(*self.getActiveWindowsCoordinates())
             #if not exists(self.setImageRecognitionSensitivity(args[0], args[1])):
-            assert not exists(self.setImageRecognitionSensitivity(args[0], args[1]))
-            self.log.passed("No matching UI detected on screen in reference to image: '%s'." % (args[0],))
+            #assert not exists(self.setImageRecognitionSensitivity(args[0], args[1]))
+            if not self.imageExists(*args):
+                self.log.passed("No matching UI detected on screen in reference to image: '%s'." % (args[0],))
+            else:
+                self.log.failed("UI matched with reference image: '%s'." % (args[0],))
         except FindFailed:
             self.log.failed("UI matched with reference image: '%s'." % (args[0],))
     

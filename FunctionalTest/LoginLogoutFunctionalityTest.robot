@@ -31,7 +31,7 @@ User Should Successfully Login To The Windows Desktop App Via Facebook Login
     When User Runs the "Windows" Desktop App
     Then User Should Be Able To View The Update Checker
     When User Is In Desktop App Login Page
-    And User Logs In With "${freelancerFBUsername}" And "${FREELANCER_TEST_PASSWORD}" Via Facebook Login
+    And User Logs In With "${FREELANCER_FBTEST_EMAIL}" And "${FREELANCER_FBTEST_PASSWORD}" Via Facebook Login
     Then User Should Be Logged In Successfully
     When User Logs Out From The Desktop App
     User Should Be Successfully Logged Out
