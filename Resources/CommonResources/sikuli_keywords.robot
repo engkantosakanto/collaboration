@@ -134,6 +134,13 @@ Start Application
     Start App    ${g_APPLICATION_PATH}
     #Set Application Focus    ${FREELANCER_DESKTOPAPP_NAME}
 
+Get Pattern Count In Active Region
+    [Arguments]    ${p_image}    ${p_imageRecognitionSensitivity}
+    Get Pattern Count In Region    ${p_image}    ${p_imageRecognitionSensitivity}
+
+Get Pattern Count In Reference Image
+    [Arguments]    ${p_image}    ${p_imageRecognitionSensitivity}
+    Get Pattern Count In Region    ${p_image}    ${p_imageRecognitionSensitivity}
 # =============================================== #
 #                       Wait                      #
 # =============================================== #
